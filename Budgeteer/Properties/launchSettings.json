@@ -1,0 +1,19 @@
+{
+	"iisSettings": {
+		"windowsAuthentication": false,
+		"anonymousAuthentication": true,
+		"iis": {
+			"applicationUrl": "https://localhost:12345",
+			"sslPort": 12345
+		}
+	},
+	"$schema": "http://json.schemastore.org/launchsettings.json",
+	"profiles": {
+		"IIS": {
+			"commandName": "IIS",
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			}
+		}
+	}
+}
