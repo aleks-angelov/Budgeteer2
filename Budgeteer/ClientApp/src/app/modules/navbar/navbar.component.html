@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+	<a class="navbar-brand"
+	   routerLink=""
+	   routerLinkActive="active">
+		<mat-icon>attach_money</mat-icon>
+		<span style="margin-left: 0.5rem">Budgeteer</span>
+	</a>
+
+	<div *ngIf="isAuthenticated()"
+	     class="collapse navbar-collapse">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link"
+				   routerLink="/Transactions/Overview"
+				   routerLinkActive="active">Overview</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link"
+				   routerLink="/Transactions/Spending"
+				   routerLinkActive="active">Spending</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link"
+				   routerLink="/Transactions/Income"
+				   routerLinkActive="active">Income</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link"
+				   routerLink="/Transactions/Savings"
+				   routerLinkActive="active">Savings</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link"
+				   routerLink="/UserGroups"
+				   routerLinkActive="active">Group</a>
+			</li>
+		</ul>
+	</div>
+
+	<users-authentication></users-authentication>
+</nav>

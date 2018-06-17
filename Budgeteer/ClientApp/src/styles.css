@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.ng-invalid:not(form) {
+	border: .0625rem solid #A94442;
+}
+
+div.btn-group .btn, button.btn {
+	padding: .375rem;
+}
+
+div.btn-group-sm .btn, button.btn-sm {
+	padding: .125rem .25rem;
+}
+
+div.card form button.btn, div.card form label, div.card table tr {
+	font-size: .875rem;
+}
+
+div.card-body {
+	padding-top: .75rem;
+}
+
+div.chart {
+	border: .0625rem solid #CED4DA;
+	padding-top: 1rem;
+}
+
+div.labeless {
+	margin-top: 1.6875rem;
+}
+
+div.table-responsive {
+	border-bottom: .0625rem solid #CED4DA;
+	border-top: .0625rem solid #CED4DA;
+	height: 25rem;
+	margin-bottom: 1.25rem;
+	margin-top: .25rem;
+}
+
+form.form-inline .form-group label {
+	margin-right: .25rem;
+}
+
+form.form-inline .form-group, form.form-inline span {
+	margin-right: 1rem;
+}
+
+main {
+	margin-bottom: .75rem;
+}
