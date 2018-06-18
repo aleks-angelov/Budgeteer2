@@ -1,14 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { MatIconModule } from '@angular/material';
-
 @NgModule({
 	imports: [
-		CommonModule,
-		MatIconModule
+		CommonModule
 	],
-	exports: [MatIconModule],
+	exports: [],
 	declarations: [],
 	providers: []
 })

@@ -74,13 +74,13 @@
 						        type="button"
 						        class="btn btn-primary"
 						        [disabled]="inEditMode">
-							<i class="fa fa-search"></i> Search
+							<i class="fas fa-search fa-fw"></i> Search
 						</button>
 						<button (click)="resetFilter()"
 						        type="button"
 						        class="btn btn-secondary"
 						        [disabled]="inEditMode">
-							<i class="fa fa-times"></i> Clear
+							<i class="fas fa-times fa-fw"></i> Clear
 						</button>
 					</div>
 				</div>
@@ -101,7 +101,7 @@
 								        type="button"
 								        class="btn btn-block btn-primary btn-sm"
 								        [disabled]="inEditMode">
-									<i class="fa fa-plus"></i>
+									<i class="fas fa-plus fa-fw"></i>
 								</button>
 							</th>
 						</tr>
@@ -186,13 +186,13 @@
 									        type="button"
 									        class="btn btn-warning btn-sm"
 									        [disabled]="inEditMode">
-										<i class="fa fa-pencil fa-fw"></i>
+										<i class="fas fa-pencil-alt fa-fw"></i>
 									</button>
 									<button (click)="removeTransaction(transaction, i)"
 									        type="button"
 									        class="btn btn-secondary btn-sm"
 									        [disabled]="inEditMode">
-										<i class="fa fa-minus fa-fw"></i>
+										<i class="fas fa-minus fa-fw"></i>
 									</button>
 								</div>
 								<div *ngIf="transaction.inEditMode"
@@ -201,12 +201,12 @@
 									        type="button"
 									        class="btn btn-success"
 									        [disabled]="overviewForm.invalid">
-										<i class="fa fa-check fa-fw"></i>
+										<i class="fas fa-check fa-fw"></i>
 									</button>
 									<button (click)="cancelTransaction(transaction)"
 									        type="button"
 									        class="btn btn-danger">
-										<i class="fa fa-times fa-fw"></i>
+										<i class="fas fa-times fa-fw"></i>
 									</button>
 								</div>
 							</td>
