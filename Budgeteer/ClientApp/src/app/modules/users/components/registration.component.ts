@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SignupDto } from '../models/signup-dto';
 import { UsersService } from '../users.service';
 import { TokensService } from '../../../infrastructure/services/tokens.service';
+import { SignupDto } from '../../../infrastructure/models/signup-dto';
 
 @Component({
 	selector: 'users-registration',

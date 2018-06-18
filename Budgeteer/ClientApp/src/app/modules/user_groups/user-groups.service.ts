@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { EntitiesService } from '../../infrastructure/base/entities.service';
-import { UserGroup } from './models/user-group';
-import { UserGroupFilter } from './models/user-group-filter';
+import { UserGroup } from '../../infrastructure/models/user-group';
+import { UserGroupFilter } from '../../infrastructure/models/user-group-filter';
 
 @Injectable({
 	providedIn: 'root'

@@ -6,20 +6,13 @@ using Newtonsoft.Json;
 
 namespace Budgeteer.Modules.Categories
 {
-	public enum CategoryType
-	{
-		Debit = 0,
-		Credit = 1,
-		Savings = 2
-	}
-
-	public class Category : Entity
+	public class CategoryModel : EntityModel
 	{
 		[MaxLength(50)]
 		[Required]
 		public string Name { get; set; }
 
-		public CategoryType Type { get; set; }
+		public CategoryTypeEnum Type { get; set; }
 
 		public bool IsActive { get; set; }
 	}

@@ -5,17 +5,17 @@ using Budgeteer.Infrastructure;
 
 namespace Budgeteer.Modules.Categories
 {
-	public class CategoryFilter : EntityFilter<Category>
+	public class CategoryFilterModel : EntityFilterModel<CategoryModel>
 	{
 		public string Name { get; set; }
 
-		public CategoryType? Type { get; set; }
+		public CategoryTypeEnum? Type { get; set; }
 
 		public bool? IsActive { get; set; }
 
-		public override Expression<Func<Category, bool>> GetPredicate()
+		public override Expression<Func<CategoryModel, bool>> GetPredicate()
 		{
-			var predicate = PredicateBuilder.True<Category>();
+			var predicate = PredicateBuilder.True<CategoryModel>();
 
 			if(!string.IsNullOrWhiteSpace(Name))
 			{

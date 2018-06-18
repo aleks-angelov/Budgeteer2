@@ -2,5 +2,5 @@
 
 namespace Budgeteer.Modules.UserGroups
 {
-	public class UserGroupFilter : EntityFilter<UserGroup> { }
+	public class UserGroupFilterModel : EntityFilterModel<UserGroupModel> { }
 }

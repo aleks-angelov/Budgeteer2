@@ -7,12 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Budgeteer.Modules.UserGroups
 {
-	public class UserGroupsRepository : EntitiesRepository<UserGroup, UserGroupFilter>
+	public class UserGroupsRepository : EntitiesRepository<UserGroupModel, UserGroupFilterModel>
 	{
 		public UserGroupsRepository(EntityContext context)
 			: base(context) { }
 
-		public override async Task<UserGroup> Read(int id)
+		public override async Task<UserGroupModel> Read(int id)
 		{
 			var result = await _context.UserGroups
 				.AsNoTracking()
@@ -21,7 +21,7 @@ namespace Budgeteer.Modules.UserGroups
 
 			for(var i = 0; i < result.Users.Count; i++)
 			{
-				result.Users[i] = new User
+				result.Users[i] = new UserModel
 				{
 					Id = result.Users[i].Id,
 					Name = result.Users[i].Name

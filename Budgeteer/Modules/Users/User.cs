@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Budgeteer.Modules.Users
 {
-	public class User : Entity
+	public class UserModel : EntityModel
 	{
 		[MaxLength(50)]
 		[Required]
@@ -22,7 +22,7 @@ namespace Budgeteer.Modules.Users
 		public string PasswordHash { get; set; }
 
 		public int? UserGroupId { get; set; }
-		public UserGroup UserGroup { get; set; }
+		public UserGroupModel UserGroup { get; set; }
 
 		[NotMapped]
 		[Required]

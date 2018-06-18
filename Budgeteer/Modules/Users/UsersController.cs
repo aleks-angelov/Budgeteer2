@@ -8,14 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace Budgeteer.Modules.Users
 {
 	[AllowAnonymous]
-	public class UsersController : EntitiesController<User, UserFilter>
+	public class UsersController : EntitiesController<UserModel, UserFilterModel>
 	{
 		public UsersController(UsersRepository repository)
 			: base(repository) { }
 
 		// POST: api/Users/Authenticate
 		[HttpPost("Authenticate")]
-		public async Task<ActionResult<User>> Authenticate(LoginDto loginModel)
+		public async Task<ActionResult<UserModel>> Authenticate(LoginDtoModel loginModel)
 		{
 			var user = await (_repository as UsersRepository).Authenticate(loginModel);
 
@@ -29,7 +29,7 @@ namespace Budgeteer.Modules.Users
 
 		// POST: api/Users/Register
 		[HttpPost("Register")]
-		public async Task<ActionResult<User>> Register(SignupDto signupModel)
+		public async Task<ActionResult<UserModel>> Register(SignupDtoModel signupModel)
 		{
 			var user = await (_repository as UsersRepository).Register(signupModel);
 

@@ -8,7 +8,7 @@ using Budgeteer.Modules.Users;
 
 namespace Budgeteer.Modules.Transactions
 {
-	public class TransactionFilter : EntityFilter<Transaction>
+	public class TransactionFilterModel : EntityFilterModel<TransactionModel>
 	{
 		public DateTime? DateFrom { get; set; }
 
@@ -16,20 +16,20 @@ namespace Budgeteer.Modules.Transactions
 
 		public string Note { get; set; }
 
-		public CategoryType? Type { get; set; }
+		public CategoryTypeEnum? Type { get; set; }
 
 		public int? CategoryId { get; set; }
-		public Category Category { get; set; }
+		public CategoryModel Category { get; set; }
 
 		public int? UserId { get; set; }
-		public User User { get; set; }
+		public UserModel User { get; set; }
 
 		public int? UserGroupId { get; set; }
-		public UserGroup UserGroup { get; set; }
+		public UserGroupModel UserGroup { get; set; }
 
-		public override Expression<Func<Transaction, bool>> GetPredicate()
+		public override Expression<Func<TransactionModel, bool>> GetPredicate()
 		{
-			var predicate = PredicateBuilder.True<Transaction>();
+			var predicate = PredicateBuilder.True<TransactionModel>();
 
 			if(DateFrom.HasValue)
 			{

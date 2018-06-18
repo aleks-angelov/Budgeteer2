@@ -2,7 +2,7 @@
 
 namespace Budgeteer.Modules.UserGroups
 {
-	public class UserGroupsController : EntitiesController<UserGroup, UserGroupFilter>
+	public class UserGroupsController : EntitiesController<UserGroupModel, UserGroupFilterModel>
 	{
 		public UserGroupsController(UserGroupsRepository repository)
 			: base(repository) { }

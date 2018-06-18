@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BaseStatisticsComponent } from './base-statistics.component';
-import { CategoryType } from '../../categories/models/category';
+import { CategoryType } from '../../../infrastructure/models/category-type';
 
 @Component({
 	selector: 'transactions-income',

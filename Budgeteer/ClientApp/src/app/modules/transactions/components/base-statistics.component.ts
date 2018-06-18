@@ -6,12 +6,13 @@ import { ChartsService } from '../../../infrastructure/services/charts.service';
 import { CategoriesService } from '../../categories/categories.service';
 import { TransactionsService } from '../transactions.service';
 import { UserGroupsService } from '../../user_groups/user-groups.service';
-import { Category, CategoryType } from '../../categories/models/category';
-import { UserGroup } from '../../user_groups/models/user-group';
-import { Transaction } from '../models/transaction';
-import { TransactionFilter } from '../models/transaction-filter';
-import { CategoryFilter } from '../../categories/models/category-filter';
-import { User } from '../../users/models/user';
+import { Category } from '../../../infrastructure/models/category';
+import { CategoryFilter } from '../../../infrastructure/models/category-filter';
+import { CategoryType } from '../../../infrastructure/models/category-type';
+import { Transaction } from '../../../infrastructure/models/transaction';
+import { TransactionFilter } from '../../../infrastructure/models/transaction-filter';
+import { User } from '../../../infrastructure/models/user';
+import { UserGroup } from '../../../infrastructure/models/user-group';
 
 export abstract class BaseStatisticsComponent {
 	categories: Category[];

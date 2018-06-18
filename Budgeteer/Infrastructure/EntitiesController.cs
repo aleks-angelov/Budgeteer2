@@ -11,8 +11,8 @@ namespace Budgeteer.Infrastructure
 	[ApiController]
 	[Route("api/[controller]")]
 	public abstract class EntitiesController<T, TFilter> : ControllerBase
-		where T : Entity
-		where TFilter : EntityFilter<T>, new()
+		where T : EntityModel
+		where TFilter : EntityFilterModel<T>, new()
 	{
 		protected readonly EntitiesRepository<T, TFilter> _repository;
 

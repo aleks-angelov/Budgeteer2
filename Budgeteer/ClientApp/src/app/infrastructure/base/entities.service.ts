@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../environments/environment';
-import { Entity } from './entity';
-import { EntityFilter } from './entity-filter';
+import { Entity } from '../models/entity';
+import { EntityFilter } from '../models/entity-filter';
 import { Utils } from './utils';
 
 export abstract class EntitiesService<T extends Entity, TFilter extends EntityFilter> {

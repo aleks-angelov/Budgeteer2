@@ -5,13 +5,13 @@ using Budgeteer.Infrastructure;
 
 namespace Budgeteer.Modules.Users
 {
-	public class UserFilter : EntityFilter<User>
+	public class UserFilterModel : EntityFilterModel<UserModel>
 	{
 		public string Email { get; set; }
 
-		public override Expression<Func<User, bool>> GetPredicate()
+		public override Expression<Func<UserModel, bool>> GetPredicate()
 		{
-			var predicate = PredicateBuilder.True<User>();
+			var predicate = PredicateBuilder.True<UserModel>();
 
 			if(!string.IsNullOrWhiteSpace(Email))
 			{

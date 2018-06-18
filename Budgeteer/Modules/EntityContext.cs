@@ -9,35 +9,35 @@ namespace Budgeteer.Modules
 {
 	public class EntityContext : DbContext
 	{
-		public DbSet<Category> Categories { get; set; }
+		public DbSet<CategoryModel> Categories { get; set; }
 
-		public DbSet<Transaction> Transactions { get; set; }
+		public DbSet<TransactionModel> Transactions { get; set; }
 
-		public DbSet<User> Users { get; set; }
+		public DbSet<UserModel> Users { get; set; }
 
-		public DbSet<UserGroup> UserGroups { get; set; }
+		public DbSet<UserGroupModel> UserGroups { get; set; }
 
 		public EntityContext(DbContextOptions<EntityContext> options)
 			: base(options) { }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<Transaction>()
+			modelBuilder.Entity<TransactionModel>()
 				.HasOne(t => t.Category)
 				.WithMany()
 				.HasForeignKey(t => t.CategoryId)
 				.IsRequired();
 
-			modelBuilder.Entity<Transaction>()
+			modelBuilder.Entity<TransactionModel>()
 				.HasOne(t => t.User)
 				.WithMany()
 				.HasForeignKey(t => t.UserId)
 				.IsRequired();
 
-			modelBuilder.Entity<User>()
+			modelBuilder.Entity<UserModel>()
 				.HasAlternateKey(u => u.Email);
 
-			modelBuilder.Entity<UserGroup>()
+			modelBuilder.Entity<UserGroupModel>()
 				.HasMany(ug => ug.Users)
 				.WithOne(u => u.UserGroup)
 				.HasForeignKey(u => u.UserGroupId);

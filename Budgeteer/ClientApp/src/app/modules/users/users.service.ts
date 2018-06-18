@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { EntitiesService } from '../../infrastructure/base/entities.service';
-import { LoginDto } from './models/login-dto';
-import { SignupDto } from './models/signup-dto';
-import { User } from './models/user';
-import { UserFilter } from './models/user-filter';
+import { LoginDto } from '../../infrastructure/models/login-dto';
+import { SignupDto } from '../../infrastructure/models/signup-dto';
+import { User } from '../../infrastructure/models/user';
+import { UserFilter } from '../../infrastructure/models/user-filter';
 
 @Injectable({
 	providedIn: 'root'

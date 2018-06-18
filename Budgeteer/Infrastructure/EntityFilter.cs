@@ -3,8 +3,8 @@ using System.Linq.Expressions;
 
 namespace Budgeteer.Infrastructure
 {
-	public abstract class EntityFilter<T>
-		where T : Entity
+	public abstract class EntityFilterModel<T>
+		where T : EntityModel
 	{
 		public virtual Expression<Func<T, bool>> GetPredicate()
 		{

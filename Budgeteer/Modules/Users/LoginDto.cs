@@ -2,7 +2,7 @@
 
 namespace Budgeteer.Modules.Users
 {
-	public class LoginDto
+	public class LoginDtoModel
 	{
 		[MaxLength(50)]
 		[Required]

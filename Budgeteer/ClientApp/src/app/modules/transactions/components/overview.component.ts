@@ -3,13 +3,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { chart } from 'highcharts';
 
 import { ChartsService } from '../../../infrastructure/services/charts.service';
-import { Transaction } from '../models/transaction';
-import { TransactionFilter } from '../models/transaction-filter';
-import { CategoryType, Category } from '../../categories/models/category';
 import { CategoriesService } from '../../categories/categories.service';
 import { TransactionsService } from '../transactions.service';
-import { CategoryFilter } from '../../categories/models/category-filter';
 import { UsersService } from '../../users/users.service';
+import { Category } from '../../../infrastructure/models/category';
+import { CategoryFilter } from '../../../infrastructure/models/category-filter';
+import { CategoryType } from 'src/app/infrastructure/models/category-type';
+import { Transaction } from '../../../infrastructure/models/transaction';
+import { TransactionFilter } from '../../../infrastructure/models/transaction-filter';
 
 @Component({
 	selector: 'transactions-overview',
@@ -86,7 +87,16 @@ export class OverviewComponent implements OnInit {
 	}
 
 	addTransaction() {
-		this.transactions.unshift(new Transaction());
+		const newTransaction = new Transaction();
+		newTransaction.date = new Date();
+		newTransaction.type = CategoryType.Debit;
+
+		if (this.usersService.currentUser) {
+			newTransaction.userId = this.usersService.currentUser.id;
+		}
+
+		this.transactions.unshift(newTransaction);
+		newTransaction.inEditMode = true;
 		this.inEditMode = true;
 	}
 

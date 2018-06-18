@@ -12,14 +12,14 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Budgeteer.Modules.Users
 {
-	public class UsersRepository : EntitiesRepository<User, UserFilter>
+	public class UsersRepository : EntitiesRepository<UserModel, UserFilterModel>
 	{
 		private readonly IConfiguration _configuration;
 
 		public UsersRepository(EntityContext context, IConfiguration configuration)
 					: base(context) { _configuration = configuration; }
 
-		public async Task<User> Authenticate(LoginDto loginModel)
+		public async Task<UserModel> Authenticate(LoginDtoModel loginModel)
 		{
 			var user = await _entitySet
 				.AsNoTracking()
@@ -35,9 +35,9 @@ namespace Budgeteer.Modules.Users
 			return null;
 		}
 
-		public async Task<User> Register(SignupDto signupModel)
+		public async Task<UserModel> Register(SignupDtoModel signupModel)
 		{
-			var newUser = new User
+			var newUser = new UserModel
 			{
 				Email = signupModel.Email.Trim(),
 				Name = signupModel.Name.Trim(),

@@ -8,7 +8,7 @@ using Budgeteer.Modules.Users;
 
 namespace Budgeteer.Modules.Transactions
 {
-	public class Transaction : Entity
+	public class TransactionModel : EntityModel
 	{
 		[Column(TypeName = "datetime2(3)")]
 		public DateTime Date { get; set; }
@@ -18,12 +18,12 @@ namespace Budgeteer.Modules.Transactions
 		[MaxLength(100)]
 		public string Note { get; set; }
 
-		public CategoryType Type { get; set; }
+		public CategoryTypeEnum Type { get; set; }
 
 		public int CategoryId { get; set; }
-		public Category Category { get; set; }
+		public CategoryModel Category { get; set; }
 
 		public int UserId { get; set; }
-		public User User { get; set; }
+		public UserModel User { get; set; }
 	}
 }

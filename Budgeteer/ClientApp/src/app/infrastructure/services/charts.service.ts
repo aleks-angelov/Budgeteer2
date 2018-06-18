@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { DataPoint, IndividualSeriesOptions, TitleOptions } from 'highcharts';
 
 import { InfrastructureModule } from '../infrastructure.module';
-import { Transaction } from '../../modules/transactions/models/transaction';
-import { CategoryType, Category } from '../../modules/categories/models/category';
-import { User } from '../../modules/users/models/user';
+import { Category } from '../models/category';
+import { CategoryType } from '../models/category-type';
+import { Transaction } from '../models/transaction';
+import { User } from '../models/user';
 
 @Injectable({
 	providedIn: InfrastructureModule

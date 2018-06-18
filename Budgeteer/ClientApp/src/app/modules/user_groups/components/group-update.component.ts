@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserGroup } from '../models/user-group';
+import { UserGroup } from '../../../infrastructure/models/user-group';
 import { UserGroupsService } from '../user-groups.service';
 
 @Component({

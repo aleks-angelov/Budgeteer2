@@ -6,7 +6,7 @@ using Budgeteer.Modules.Users;
 
 namespace Budgeteer.Modules.UserGroups
 {
-	public class UserGroup : Entity
+	public class UserGroupModel : EntityModel
 	{
 		[MaxLength(50)]
 		[Required]
@@ -14,6 +14,6 @@ namespace Budgeteer.Modules.UserGroups
 
 		public int CreatorId { get; set; }
 
-		public List<User> Users { get; set; }
+		public List<UserModel> Users { get; set; }
 	}
 }

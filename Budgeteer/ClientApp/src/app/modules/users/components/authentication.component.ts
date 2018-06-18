@@ -1,10 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginDto } from 'src/app/modules/users/models/login-dto';
 import { UserGroupsService } from '../../user_groups/user-groups.service';
 import { UsersService } from '../users.service';
 import { TokensService } from '../../../infrastructure/services/tokens.service';
+import { LoginDto } from '../../../infrastructure/models/login-dto';
 
 @Component({
 	selector: 'users-authentication',

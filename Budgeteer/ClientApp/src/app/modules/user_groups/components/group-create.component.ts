@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { UserGroup } from '../models/user-group';
-import { UserGroupsService } from '../user-groups.service';
+import { User } from '../../../infrastructure/models/user';
+import { UserFilter } from '../../../infrastructure/models/user-filter';
 import { UsersService } from '../../users/users.service';
-import { User } from '../../users/models/user';
-import { UserFilter } from '../../users/models/user-filter';
-
+import { UserGroup } from '../../../infrastructure/models/user-group';
+import { UserGroupsService } from '../user-groups.service';
 
 @Component({
 	selector: 'usergroups-create',

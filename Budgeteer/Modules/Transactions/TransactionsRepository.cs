@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Budgeteer.Modules.Transactions
 {
-	public class TransactionsRepository : EntitiesRepository<Transaction, TransactionFilter>
+	public class TransactionsRepository : EntitiesRepository<TransactionModel, TransactionFilterModel>
 	{
 		public TransactionsRepository(EntityContext context)
 			: base(context) { }
 
-		public override async Task<List<Transaction>> ReadFiltered(TransactionFilter filter)
+		public override async Task<List<TransactionModel>> ReadFiltered(TransactionFilterModel filter)
 		{
 			var predicate = filter.GetPredicate();
 			var result = await _context.Transactions
@@ -27,7 +27,7 @@ namespace Budgeteer.Modules.Transactions
 			return result;
 		}
 
-		public override async Task<Transaction> Read(int id)
+		public override async Task<TransactionModel> Read(int id)
 		{
 			var result = await _context.Transactions
 				.AsNoTracking()

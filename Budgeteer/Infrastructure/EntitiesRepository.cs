@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Budgeteer.Infrastructure
 {
 	public abstract class EntitiesRepository<T, TFilter>
-		where T : Entity
-		where TFilter : EntityFilter<T>, new()
+		where T : EntityModel
+		where TFilter : EntityFilterModel<T>, new()
 	{
 		protected readonly EntityContext _context;
 		protected readonly DbSet<T> _entitySet;
