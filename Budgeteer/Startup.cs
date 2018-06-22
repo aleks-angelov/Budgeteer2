@@ -19,6 +19,8 @@ using Microsoft.IdentityModel.Tokens;
 
 using Newtonsoft.Json;
 
+using Swashbuckle.AspNetCore.Swagger;
+
 namespace Budgeteer
 {
 	public class Startup
@@ -66,12 +68,17 @@ namespace Budgeteer
 				.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
 				.AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
-			services.AddDbContext<EntityContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Budgeteer")));
+			services.AddDbContextPool<EntityContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Budgeteer")));
 
 			services.AddScoped<CategoriesRepository>();
 			services.AddScoped<TransactionsRepository>();
 			services.AddScoped<UserGroupsRepository>();
 			services.AddScoped<UsersRepository>();
+
+			services.AddSwaggerGen(options =>
+			{
+				options.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -84,6 +91,7 @@ namespace Budgeteer
 							  .AllowAnyMethod());
 
 				app.UseDeveloperExceptionPage();
+				app.UseDatabaseErrorPage();
 			}
 			else
 			{
@@ -96,6 +104,12 @@ namespace Budgeteer
 			app.UseFileServer();
 
 			app.UseAuthentication();
+
+			app.UseSwagger();
+			app.UseSwaggerUI(options =>
+			{
+				options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+			});
 
 			app.UseMvc();
 		}
