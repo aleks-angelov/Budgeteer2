@@ -1,5 +1,5 @@
 ﻿
 
-export class EntityFilter {
+export abstract class EntityFilter {
 
 }

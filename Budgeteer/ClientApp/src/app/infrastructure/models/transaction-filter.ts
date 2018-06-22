@@ -6,14 +6,14 @@ import { User } from './user';
 import { UserGroup } from './user-group';
 
 export class TransactionFilter extends EntityFilter {
-	dateFrom: Date;
-	dateUntil: Date;
+	dateFrom?: Date;
+	dateUntil?: Date;
 	note: string;
-	type: CategoryType;
-	categoryId: number;
+	type?: CategoryType;
+	categoryId?: number;
 	category: Category;
-	userId: number;
+	userId?: number;
 	user: User;
-	userGroupId: number;
+	userGroupId?: number;
 	userGroup: UserGroup;
 }

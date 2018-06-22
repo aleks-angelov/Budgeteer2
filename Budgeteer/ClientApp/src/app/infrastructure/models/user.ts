@@ -6,7 +6,7 @@ export class User extends Entity {
 	email: string;
 	name: string;
 	passwordHash: string;
-	userGroupId: number;
+	userGroupId?: number;
 	userGroup: UserGroup;
 	authToken: string;
 }

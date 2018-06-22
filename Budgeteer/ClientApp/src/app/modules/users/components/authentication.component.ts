@@ -20,6 +20,8 @@ export class AuthenticationComponent {
 		private userGroupsService: UserGroupsService,
 		private usersService: UsersService) {
 		this.loginModel = new LoginDto();
+		this.loginModel.email = 'aleks_angelov@mail.com';
+		this.loginModel.password = 'Mastera1';
 	}
 
 	isAuthenticated() {

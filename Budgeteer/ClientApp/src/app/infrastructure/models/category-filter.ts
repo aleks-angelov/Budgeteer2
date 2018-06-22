@@ -4,6 +4,6 @@ import { CategoryType } from './category-type';
 
 export class CategoryFilter extends EntityFilter {
 	name: string;
-	type: CategoryType;
-	isActive: boolean;
+	type?: CategoryType;
+	isActive?: boolean;
 }
