@@ -77,7 +77,7 @@ namespace Budgeteer
 
 			services.AddSwaggerGen(options =>
 			{
-				options.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+				options.SwaggerDoc("v1", new Info { Title = "Budgeteer API", Version = "v1" });
 			});
 		}
 
@@ -108,7 +108,7 @@ namespace Budgeteer
 			app.UseSwagger();
 			app.UseSwaggerUI(options =>
 			{
-				options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+				options.SwaggerEndpoint("/swagger/v1/swagger.json", "Budgeteer API v1");
 			});
 
 			app.UseMvc();
