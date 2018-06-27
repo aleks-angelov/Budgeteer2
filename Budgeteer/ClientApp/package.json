@@ -21,7 +21,7 @@
 		"@fortawesome/fontawesome-free": "^5.1.0",
 		"bootstrap": "^4.1.1",
 		"core-js": "^2.5.7",
-		"highcharts": "^6.1.0",
+		"highcharts": "^6.1.1",
 		"rxjs": "^6.2.1",
 		"zone.js": "^0.8.26"
 	},
@@ -31,7 +31,7 @@
 		"@angular/compiler-cli": "^6.0.6",
 		"@angular/language-service": "^6.0.6",
 		"@types/highcharts": "^5.0.23",
-		"codelyzer": "~4.3.0",
+		"codelyzer": "~4.4.2",
 		"tslint": "~5.10.0",
 		"typescript": "~2.7.2"
 	}
