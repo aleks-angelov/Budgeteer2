@@ -1,230 +1,238 @@
 <div class="card border-top-0">
 	<div class="card-body">
-		<form #overviewForm="ngForm">
-			<div class="row">
-				<div class="form-group col-sm-2">
-					<label for="filterDateFrom">Date from:</label>
-					<input [(ngModel)]="transactionFilter.dateFrom"
-					       type="date"
-					       class="form-control form-control-sm"
-					       id="filterDateFrom"
-					       name="filterDateFrom">
-				</div>
-				<div class="form-group col-sm-2">
-					<label for="filterDateUntil">Date until:</label>
-					<input [(ngModel)]="transactionFilter.dateUntil"
-					       type="date"
-					       class="form-control form-control-sm"
-					       id="filterDateUntil"
-					       name="filterDateUntil">
-				</div>
-				<div class="form-group col-sm-1 col-lg-2">
-					<label for="filterType">Type:</label>
-					<select [(ngModel)]="transactionFilter.type"
-					        class="form-control form-control-sm"
-					        id="filterType"
-					        name="filterType">
-						<option [ngValue]="categoryType.Debit">Debit</option>
-						<option [ngValue]="categoryType.Credit">Credit</option>
-						<option [ngValue]="categoryType.Savings">Savings</option>
-					</select>
-				</div>
-				<div class="form-group col-sm-2">
-					<label for="filterCategory">Category:</label>
-					<select *ngIf="transactionFilter.type === categoryType.Debit"
-					        [ngModel]="transactionFilter.category"
-					        (ngModelChange)="changeFilterCategory($event)"
-					        class="form-control form-control-sm"
-					        id="filterCategory"
-					        name="filterCategory">
-						<option *ngFor="let category of debitCategories"
-						        [ngValue]="category">{{ category.name }}</option>
-					</select>
-					<select *ngIf="transactionFilter.type === categoryType.Credit"
-					        [ngModel]="transactionFilter.category"
-					        (ngModelChange)="changeFilterCategory($event)"
-					        class="form-control form-control-sm"
-					        id="filterCategory"
-					        name="filterCategory">
-						<option *ngFor="let category of creditCategories"
-						        [ngValue]="category">{{ category.name }}</option>
-					</select>
-					<select *ngIf="transactionFilter.type === categoryType.Savings"
-					        [ngModel]="transactionFilter.category"
-					        (ngModelChange)="changeFilterCategory($event)"
-					        class="form-control form-control-sm"
-					        id="filterCategory"
-					        name="filterCategory">
-						<option *ngFor="let category of savingsCategories"
-						        [ngValue]="category">{{ category.name }}</option>
-					</select>
-				</div>
-				<div class="form-group col-sm-2">
-					<label for="filterNote">Note:</label>
-					<input [(ngModel)]="transactionFilter.note"
-					       type="text"
-					       class="form-control form-control-sm"
-					       id="filterNote"
-					       name="filterNote"
-					       maxlength="100">
-				</div>
-				<div class="col-sm-3 col-lg-2 clearfix">
-					<div class="btn-group float-right labeless">
-						<button (click)="applyFilter()"
-						        type="button"
-						        class="btn btn-primary"
-						        [disabled]="inEditMode">
-							<i class="fas fa-search fa-fw"></i> Search
-						</button>
-						<button (click)="resetFilter()"
-						        type="button"
-						        class="btn btn-secondary"
-						        [disabled]="inEditMode">
-							<i class="fas fa-times fa-fw"></i> Clear
-						</button>
+		<section>
+			<form #overviewForm="ngForm">
+				<div class="row">
+					<div class="form-group col-sm-2">
+						<label for="filterDateFrom">Date from:</label>
+						<input [(ngModel)]="transactionFilter.dateFrom"
+						       type="date"
+						       class="form-control form-control-sm"
+						       id="filterDateFrom"
+						       name="filterDateFrom">
+					</div>
+					<div class="form-group col-sm-2">
+						<label for="filterDateUntil">Date until:</label>
+						<input [(ngModel)]="transactionFilter.dateUntil"
+						       type="date"
+						       class="form-control form-control-sm"
+						       id="filterDateUntil"
+						       name="filterDateUntil">
+					</div>
+					<div class="form-group col-sm-1 col-lg-2">
+						<label for="filterType">Type:</label>
+						<select [(ngModel)]="transactionFilter.type"
+						        class="form-control form-control-sm"
+						        id="filterType"
+						        name="filterType">
+							<option [ngValue]="categoryType.Debit">Debit</option>
+							<option [ngValue]="categoryType.Credit">Credit</option>
+							<option [ngValue]="categoryType.Savings">Savings</option>
+						</select>
+					</div>
+					<div class="form-group col-sm-2">
+						<label for="filterCategory">Category:</label>
+						<select *ngIf="transactionFilter.type === categoryType.Debit"
+						        [ngModel]="transactionFilter.category"
+						        (ngModelChange)="changeFilterCategory($event)"
+						        class="form-control form-control-sm"
+						        id="filterCategory"
+						        name="filterCategory">
+							<option *ngFor="let category of debitCategories"
+							        [ngValue]="category">{{ category.name }}</option>
+						</select>
+						<select *ngIf="transactionFilter.type === categoryType.Credit"
+						        [ngModel]="transactionFilter.category"
+						        (ngModelChange)="changeFilterCategory($event)"
+						        class="form-control form-control-sm"
+						        id="filterCategory"
+						        name="filterCategory">
+							<option *ngFor="let category of creditCategories"
+							        [ngValue]="category">{{ category.name }}</option>
+						</select>
+						<select *ngIf="transactionFilter.type === categoryType.Savings"
+						        [ngModel]="transactionFilter.category"
+						        (ngModelChange)="changeFilterCategory($event)"
+						        class="form-control form-control-sm"
+						        id="filterCategory"
+						        name="filterCategory">
+							<option *ngFor="let category of savingsCategories"
+							        [ngValue]="category">{{ category.name }}</option>
+						</select>
+					</div>
+					<div class="form-group col-sm-2">
+						<label for="filterNote">Note:</label>
+						<input [(ngModel)]="transactionFilter.note"
+						       type="text"
+						       class="form-control form-control-sm"
+						       id="filterNote"
+						       name="filterNote"
+						       maxlength="100">
+					</div>
+					<div class="col-sm-3 col-lg-2 clearfix">
+						<div class="btn-group float-right labeless">
+							<button (click)="applyFilter()"
+							        type="button"
+							        class="btn btn-primary"
+							        [disabled]="inEditMode">
+								<i class="fas fa-search fa-fw"></i> Search
+							</button>
+							<button (click)="resetFilter()"
+							        type="button"
+							        class="btn btn-secondary"
+							        [disabled]="inEditMode">
+								<i class="fas fa-times fa-fw"></i> Clear
+							</button>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div *ngIf="transactions.length"
-			     class="table-responsive">
-				<table class="table table-bordered table-hover table-sm table-striped">
-					<thead>
-						<tr>
-							<th style="width: 18%">Date:</th>
-							<th style="width: 14%">Type:</th>
-							<th style="width: 20%">Category:</th>
-							<th style="width: 16%">Amount:</th>
-							<th>Note:</th>
-							<th style="width: 8%">
-								<button (click)="addTransaction()"
-								        type="button"
-								        class="btn btn-block btn-primary btn-sm"
-								        [disabled]="inEditMode">
-									<i class="fas fa-plus fa-fw"></i>
-								</button>
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let transaction of transactions; let i=index">
-							<td>
-								<input *ngIf="transaction.inEditMode"
-								       [(ngModel)]="transaction.date"
-								       type="date"
-								       class="form-control form-control-sm"
-								       name="date-{{ i }}"
-								       required>
-								<span *ngIf="!transaction.inEditMode">{{ transaction.date | date:'dd/MM/yyyy' }}</span>
-							</td>
-							<td>
-								<select *ngIf="transaction.inEditMode"
-								        [(ngModel)]="transaction.type"
-								        class="form-control form-control-sm"
-								        name="type-{{ i }}"
-								        required>
-									<option [ngValue]="categoryType.Debit">Debit</option>
-									<option [ngValue]="categoryType.Credit">Credit</option>
-									<option [ngValue]="categoryType.Savings">Savings</option>
-								</select>
-								<span *ngIf="!transaction.inEditMode">{{ categoryType[transaction.type] }}</span>
-							</td>
-							<td>
-								<div *ngIf="transaction.inEditMode">
-									<select *ngIf="transaction.type === categoryType.Debit"
-									        [ngModel]="transaction.category"
-									        (ngModelChange)="changeCategory(transaction, $event)"
-									        class="form-control form-control-sm"
-									        name="category-{{ i }}"
-									        required>
-										<option *ngFor="let category of debitCategories"
-										        [ngValue]="category">{{ category.name }}</option>
-									</select>
-									<select *ngIf="transaction.type === categoryType.Credit"
-									        [ngModel]="transaction.category"
-									        (ngModelChange)="changeCategory(transaction, $event)"
-									        class="form-control form-control-sm"
-									        name="category-{{ i }}"
-									        required>
-										<option *ngFor="let category of creditCategories"
-										        [ngValue]="category">{{ category.name }}</option>
-									</select>
-									<select *ngIf="transaction.type === categoryType.Savings"
-									        [ngModel]="transaction.category"
-									        (ngModelChange)="changeCategory(transaction, $event)"
-									        class="form-control form-control-sm"
-									        name="category-{{ i }}"
-									        required>
-										<option *ngFor="let category of savingsCategories"
-										        [ngValue]="category">{{ category.name }}</option>
-									</select>
-								</div>
-								<span *ngIf="!transaction.inEditMode">{{ transaction.category?.name }}</span>
-							</td>
-							<td>
-								<input *ngIf="transaction.inEditMode"
-								       [(ngModel)]="transaction.amount"
-								       type="number"
-								       class="form-control form-control-sm"
-								       name="amount-{{ i }}"
-								       required>
-								<span *ngIf="!transaction.inEditMode">{{ transaction.amount | number:'1.2-2' }} лв.</span>
-							</td>
-							<td>
-								<input *ngIf="transaction.inEditMode"
-								       [(ngModel)]="transaction.note"
-								       type="text"
-								       class="form-control form-control-sm"
-								       name="note-{{ i }}"
-								       maxlength="100">
-								<span *ngIf="!transaction.inEditMode">{{ transaction.note }}</span>
-							</td>
-							<td class="text-center">
-								<div *ngIf="!transaction.inEditMode"
-								     class="btn-group btn-group-sm">
-									<button (click)="editTransaction(transaction)"
+				<div *ngIf="transactions.length"
+				     class="table-responsive">
+					<table class="table table-bordered table-hover table-sm table-striped">
+						<thead>
+							<tr>
+								<th style="width: 18%">Date:</th>
+								<th style="width: 14%">Type:</th>
+								<th style="width: 20%">Category:</th>
+								<th style="width: 16%">Amount:</th>
+								<th>Note:</th>
+								<th style="width: 8%">
+									<button (click)="addTransaction()"
 									        type="button"
-									        class="btn btn-warning btn-sm"
+									        class="btn btn-block btn-primary btn-sm"
 									        [disabled]="inEditMode">
-										<i class="fas fa-pencil-alt fa-fw"></i>
+										<i class="fas fa-plus fa-fw"></i>
 									</button>
-									<button (click)="removeTransaction(transaction, i)"
-									        type="button"
-									        class="btn btn-secondary btn-sm"
-									        [disabled]="inEditMode">
-										<i class="fas fa-minus fa-fw"></i>
-									</button>
-								</div>
-								<div *ngIf="transaction.inEditMode"
-								     class="btn-group btn-group-sm">
-									<button (click)="saveTransaction(transaction)"
-									        type="button"
-									        class="btn btn-success"
-									        [disabled]="overviewForm.invalid">
-										<i class="fas fa-check fa-fw"></i>
-									</button>
-									<button (click)="cancelTransaction(transaction)"
-									        type="button"
-									        class="btn btn-danger">
-										<i class="fas fa-times fa-fw"></i>
-									</button>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</form>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let transaction of transactions; let i=index">
+								<td>
+									<input *ngIf="transaction.inEditMode"
+									       [(ngModel)]="transaction.date"
+									       type="date"
+									       class="form-control form-control-sm"
+									       name="date-{{ i }}"
+									       required>
+									<span *ngIf="!transaction.inEditMode">{{ transaction.date | date:'dd/MM/yyyy' }}</span>
+								</td>
+								<td>
+									<select *ngIf="transaction.inEditMode"
+									        [(ngModel)]="transaction.type"
+									        class="form-control form-control-sm"
+									        name="type-{{ i }}"
+									        required>
+										<option [ngValue]="categoryType.Debit">Debit</option>
+										<option [ngValue]="categoryType.Credit">Credit</option>
+										<option [ngValue]="categoryType.Savings">Savings</option>
+									</select>
+									<span *ngIf="!transaction.inEditMode">{{ categoryType[transaction.type] }}</span>
+								</td>
+								<td>
+									<div *ngIf="transaction.inEditMode">
+										<select *ngIf="transaction.type === categoryType.Debit"
+										        [ngModel]="transaction.category"
+										        (ngModelChange)="changeCategory(transaction, $event)"
+										        class="form-control form-control-sm"
+										        name="category-{{ i }}"
+										        required>
+											<option *ngFor="let category of debitCategories"
+											        [ngValue]="category">{{ category.name }}</option>
+										</select>
+										<select *ngIf="transaction.type === categoryType.Credit"
+										        [ngModel]="transaction.category"
+										        (ngModelChange)="changeCategory(transaction, $event)"
+										        class="form-control form-control-sm"
+										        name="category-{{ i }}"
+										        required>
+											<option *ngFor="let category of creditCategories"
+											        [ngValue]="category">{{ category.name }}</option>
+										</select>
+										<select *ngIf="transaction.type === categoryType.Savings"
+										        [ngModel]="transaction.category"
+										        (ngModelChange)="changeCategory(transaction, $event)"
+										        class="form-control form-control-sm"
+										        name="category-{{ i }}"
+										        required>
+											<option *ngFor="let category of savingsCategories"
+											        [ngValue]="category">{{ category.name }}</option>
+										</select>
+									</div>
+									<span *ngIf="!transaction.inEditMode">{{ transaction.category?.name }}</span>
+								</td>
+								<td>
+									<input *ngIf="transaction.inEditMode"
+									       [(ngModel)]="transaction.amount"
+									       type="number"
+									       class="form-control form-control-sm"
+									       name="amount-{{ i }}"
+									       required>
+									<span *ngIf="!transaction.inEditMode">{{ transaction.amount | number:'1.2-2' }} лв.</span>
+								</td>
+								<td>
+									<input *ngIf="transaction.inEditMode"
+									       [(ngModel)]="transaction.note"
+									       type="text"
+									       class="form-control form-control-sm"
+									       name="note-{{ i }}"
+									       maxlength="100">
+									<span *ngIf="!transaction.inEditMode">{{ transaction.note }}</span>
+								</td>
+								<td class="text-center">
+									<div *ngIf="!transaction.inEditMode"
+									     class="btn-group btn-group-sm">
+										<button (click)="editTransaction(transaction)"
+										        type="button"
+										        class="btn btn-warning btn-sm"
+										        [disabled]="inEditMode">
+											<i class="fas fa-pencil-alt fa-fw"></i>
+										</button>
+										<button (click)="removeTransaction(transaction, i)"
+										        type="button"
+										        class="btn btn-secondary btn-sm"
+										        [disabled]="inEditMode">
+											<i class="fas fa-minus fa-fw"></i>
+										</button>
+									</div>
+									<div *ngIf="transaction.inEditMode"
+									     class="btn-group btn-group-sm">
+										<button (click)="saveTransaction(transaction)"
+										        type="button"
+										        class="btn btn-success"
+										        [disabled]="overviewForm.invalid">
+											<i class="fas fa-check fa-fw"></i>
+										</button>
+										<button (click)="cancelTransaction(transaction)"
+										        type="button"
+										        class="btn btn-danger">
+											<i class="fas fa-times fa-fw"></i>
+										</button>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</form>
+		</section>
 
-		<div class="row">
-			<div class="col-sm-6">
-				<div #overviewHistoryChartTarget
-				     class="chart"></div>
+		<section>
+			<div class="row">
+				<div class="col-sm-6">
+					<figure>
+						<div #overviewHistoryChartTarget
+						     class="chart"></div>
+					</figure>
+				</div>
+				<div class="col-sm-6">
+					<figure>
+						<div #overviewDistributionChartTarget
+						     class="chart"></div>
+					</figure>
+				</div>
 			</div>
-			<div class="col-sm-6">
-				<div #overviewDistributionChartTarget
-				     class="chart"></div>
-			</div>
-		</div>
+		</section>
 	</div>
 </div>

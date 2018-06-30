@@ -1,122 +1,134 @@
 <div class="card border-top-0">
 	<div class="card-body">
-		<form #categoryForm="ngForm"
-		      style="margin-bottom: 0.25rem">
-			<div class="row">
-				<div class="form-group col-sm-3">
-					<label for="categoryFilterDateFrom">Date from:</label>
-					<input [(ngModel)]="categoryTransactionFilter.dateFrom"
-					       type="date"
-					       class="form-control form-control-sm"
-					       id="categoryFilterDateFrom"
-					       name="categoryFilterDateFrom">
-				</div>
-				<div class="form-group col-sm-3">
-					<label for="categoryFilterDateUntil">Date until:</label>
-					<input [(ngModel)]="categoryTransactionFilter.dateUntil"
-					       type="date"
-					       class="form-control form-control-sm"
-					       id="categoryFilterDateUntil"
-					       name="categoryFilterDateUntil">
-				</div>
-				<div class="form-group col-sm-3">
-					<label for="categoryFilterCategory">Category:</label>
-					<select [ngModel]="categoryTransactionFilter.category"
-					        (ngModelChange)="changeFilterCategory($event)"
-					        class="form-control form-control-sm"
-					        id="categoryFilterCategory"
-					        name="categoryFilterCategory">
-						<option *ngFor="let category of categories"
-						        [ngValue]="category">{{ category.name }}</option>
-					</select>
-				</div>
-				<div class="col-sm-3 clearfix">
-					<div class="btn-group float-right labeless">
-						<button (click)="applyFilter(categoryTransactionFilter)"
-						        type="button"
-						        class="btn btn-primary"
-						        [disabled]="categoryForm.invalid">
-							<i class="fas fa-filter fa-fw"></i> Filter
-						</button>
-						<button (click)="resetFilter(categoryTransactionFilter)"
-						        type="button"
-						        class="btn btn-secondary">
-							<i class="fas fa-times fa-fw"></i> Reset
-						</button>
+		<section>
+			<form #categoryForm="ngForm"
+			      style="margin-bottom: 0.25rem">
+				<div class="row">
+					<div class="form-group col-sm-3">
+						<label for="categoryFilterDateFrom">Date from:</label>
+						<input [(ngModel)]="categoryTransactionFilter.dateFrom"
+						       type="date"
+						       class="form-control form-control-sm"
+						       id="categoryFilterDateFrom"
+						       name="categoryFilterDateFrom">
+					</div>
+					<div class="form-group col-sm-3">
+						<label for="categoryFilterDateUntil">Date until:</label>
+						<input [(ngModel)]="categoryTransactionFilter.dateUntil"
+						       type="date"
+						       class="form-control form-control-sm"
+						       id="categoryFilterDateUntil"
+						       name="categoryFilterDateUntil">
+					</div>
+					<div class="form-group col-sm-3">
+						<label for="categoryFilterCategory">Category:</label>
+						<select [ngModel]="categoryTransactionFilter.category"
+						        (ngModelChange)="changeFilterCategory($event)"
+						        class="form-control form-control-sm"
+						        id="categoryFilterCategory"
+						        name="categoryFilterCategory">
+							<option *ngFor="let category of categories"
+							        [ngValue]="category">{{ category.name }}</option>
+						</select>
+					</div>
+					<div class="col-sm-3 clearfix">
+						<div class="btn-group float-right labeless">
+							<button (click)="applyFilter(categoryTransactionFilter)"
+							        type="button"
+							        class="btn btn-primary"
+							        [disabled]="categoryForm.invalid">
+								<i class="fas fa-filter fa-fw"></i> Filter
+							</button>
+							<button (click)="resetFilter(categoryTransactionFilter)"
+							        type="button"
+							        class="btn btn-secondary">
+								<i class="fas fa-times fa-fw"></i> Reset
+							</button>
+						</div>
 					</div>
 				</div>
-			</div>
-		</form>
+			</form>
 
-		<div class="row"
-		     style="margin-bottom: 0.75rem">
-			<div class="col-sm-6">
-				<div #categoryHistoryChartTarget
-				     class="chart"></div>
+			<div class="row"
+			     style="margin-bottom: 0.75rem">
+				<div class="col-sm-6">
+					<figure>
+						<div #categoryHistoryChartTarget
+						     class="chart"></div>
+					</figure>
+				</div>
+				<div class="col-sm-6">
+					<figure>
+						<div #categoryDistributionChartTarget
+						     class="chart"></div>
+					</figure>
+				</div>
 			</div>
-			<div class="col-sm-6">
-				<div #categoryDistributionChartTarget
-				     class="chart"></div>
-			</div>
-		</div>
+		</section>
 
-		<form #userForm="ngForm"
-		      style="margin-bottom: 1.25rem">
-			<div class="row">
-				<div class="form-group col-sm-3">
-					<label for="userFilterDateFrom">Date from:</label>
-					<input [(ngModel)]="userTransactionFilter.dateFrom"
-					       type="date"
-					       class="form-control form-control-sm"
-					       id="userFilterDateFrom"
-					       name="userFilterDateFrom">
-				</div>
-				<div class="form-group col-sm-3">
-					<label for="userFilterDateUntil">Date until:</label>
-					<input [(ngModel)]="userTransactionFilter.dateUntil"
-					       type="date"
-					       class="form-control form-control-sm"
-					       id="userFilterDateUntil"
-					       name="userFilterDateUntil">
-				</div>
-				<div class="form-group col-sm-3">
-					<label for="userFilterUser">User:</label>
-					<select [ngModel]="userTransactionFilter.user"
-					        (ngModelChange)="changeFilterUser($event)"
-					        class="form-control form-control-sm"
-					        id="userFilterUser"
-					        name="userFilterUser">
-						<option *ngFor="let user of userGroup.users"
-						        [ngValue]="user">{{ user.name }}</option>
-					</select>
-				</div>
-				<div class="col-sm-3 clearfix">
-					<div class="btn-group float-right labeless">
-						<button (click)="applyFilter(userTransactionFilter)"
-						        type="button"
-						        class="btn btn-primary"
-						        [disabled]="userForm.invalid">
-							<i class="fas fa-filter fa-fw"></i> Filter
-						</button>
-						<button (click)="resetFilter(userTransactionFilter)"
-						        type="button"
-						        class="btn btn-secondary">
-							<i class="fas fa-times fa-fw"></i> Reset
-						</button>
+		<section>
+			<form #userForm="ngForm"
+			      style="margin-bottom: 1.25rem">
+				<div class="row">
+					<div class="form-group col-sm-3">
+						<label for="userFilterDateFrom">Date from:</label>
+						<input [(ngModel)]="userTransactionFilter.dateFrom"
+						       type="date"
+						       class="form-control form-control-sm"
+						       id="userFilterDateFrom"
+						       name="userFilterDateFrom">
+					</div>
+					<div class="form-group col-sm-3">
+						<label for="userFilterDateUntil">Date until:</label>
+						<input [(ngModel)]="userTransactionFilter.dateUntil"
+						       type="date"
+						       class="form-control form-control-sm"
+						       id="userFilterDateUntil"
+						       name="userFilterDateUntil">
+					</div>
+					<div class="form-group col-sm-3">
+						<label for="userFilterUser">User:</label>
+						<select [ngModel]="userTransactionFilter.user"
+						        (ngModelChange)="changeFilterUser($event)"
+						        class="form-control form-control-sm"
+						        id="userFilterUser"
+						        name="userFilterUser">
+							<option *ngFor="let user of userGroup.users"
+							        [ngValue]="user">{{ user.name }}</option>
+						</select>
+					</div>
+					<div class="col-sm-3 clearfix">
+						<div class="btn-group float-right labeless">
+							<button (click)="applyFilter(userTransactionFilter)"
+							        type="button"
+							        class="btn btn-primary"
+							        [disabled]="userForm.invalid">
+								<i class="fas fa-filter fa-fw"></i> Filter
+							</button>
+							<button (click)="resetFilter(userTransactionFilter)"
+							        type="button"
+							        class="btn btn-secondary">
+								<i class="fas fa-times fa-fw"></i> Reset
+							</button>
+						</div>
 					</div>
 				</div>
-			</div>
-		</form>
+			</form>
 
-		<div class="row">
-			<div class="col-sm-6">
-				<div #userHistoryChartTarget
-				     class="chart"></div>
+			<div class="row">
+				<div class="col-sm-6">
+					<figure>
+						<div #userHistoryChartTarget
+						     class="chart"></div>
+					</figure>
+				</div>
+				<div class="col-sm-6">
+					<figure>
+						<div #userDistributionChartTarget
+						     class="chart"></div>
+					</figure>
+				</div>
 			</div>
-			<div class="col-sm-6">
-				<div #userDistributionChartTarget
-				     class="chart"></div>
-			</div>
-		</div>
+		</section>
 	</div>
 </div>

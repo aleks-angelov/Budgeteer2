@@ -1,63 +1,65 @@
 <div class="card border-top-0">
 	<div class="card-body">
-		<form #signupForm="ngForm">
-			<div class="row">
-				<div class="col-sm-2"></div>
-				<div class="col-sm-8 clearfix">
-					<h3>Registration</h3>
-					<hr>
+		<section>
+			<form #signupForm="ngForm">
+				<div class="row">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-8 clearfix">
+						<h3>Registration</h3>
+						<hr>
 
-					<div class="row">
-						<div class="form-group col-sm-12">
-							<label for="signupName">Name (first and last):</label>
-							<input type="text"
-							       class="form-control"
-							       id="signupName"
-							       name="signupName"
-							       [(ngModel)]="signupModel.name"
-							       maxlength="50"
-							       placeholder="John Smith"
-							       required>
+						<div class="row">
+							<div class="form-group col-sm-12">
+								<label for="signupName">Name (first and last):</label>
+								<input type="text"
+								       class="form-control"
+								       id="signupName"
+								       name="signupName"
+								       [(ngModel)]="signupModel.name"
+								       maxlength="50"
+								       placeholder="John Smith"
+								       required>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-sm-12">
+								<label for="signupEmail">E-mail:</label>
+								<input type="email"
+								       class="form-control"
+								       id="signupEmail"
+								       name="signupEmail"
+								       [(ngModel)]="signupModel.email"
+								       maxlength="50"
+								       placeholder="name@example.com"
+								       required>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-sm-12">
+								<label for="signupPassword">Password: </label>
+								<input type="password"
+								       class="form-control"
+								       id="signupPassword"
+								       name="signupPassword"
+								       [(ngModel)]="signupModel.password"
+								       minlength="8"
+								       placeholder="********"
+								       required>
+							</div>
+						</div>
+
+						<div class="row">
+							<button (click)="register()"
+							        type="button"
+							        class="btn btn-primary float-right"
+							        [disabled]="signupForm.invalid">Sign up</button>
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="form-group col-sm-12">
-							<label for="signupEmail">E-mail:</label>
-							<input type="email"
-							       class="form-control"
-							       id="signupEmail"
-							       name="signupEmail"
-							       [(ngModel)]="signupModel.email"
-							       maxlength="50"
-							       placeholder="name@example.com"
-							       required>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-sm-12">
-							<label for="signupPassword">Password: </label>
-							<input type="password"
-							       class="form-control"
-							       id="signupPassword"
-							       name="signupPassword"
-							       [(ngModel)]="signupModel.password"
-							       minlength="8"
-							       placeholder="********"
-							       required>
-						</div>
-					</div>
-
-					<div class="row">
-						<button (click)="register()"
-						        type="button"
-						        class="btn btn-primary float-right"
-						        [disabled]="signupForm.invalid">Sign up</button>
-					</div>
+					<div class="col-sm-2"></div>
 				</div>
-				<div class="col-sm-2"></div>
-			</div>
-		</form>
+			</form>
+		</section>
 	</div>
 </div>
