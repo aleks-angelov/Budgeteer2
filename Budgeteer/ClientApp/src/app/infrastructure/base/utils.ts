@@ -1,20 +1,20 @@
 export abstract class Utils {
-	static clone(object: any): any {
-		return JSON.parse(JSON.stringify(object));
+	static clone(value: any): any {
+		return JSON.parse(JSON.stringify(value));
 	}
 
-	static prune(object: any) {
-		if (object && typeof object === 'object') {
-			if (Array.isArray(object)) {
-				for (let i = 0; i < object.length; i++) {
-					this.prune(object[i]);
+	static prune(value: any) {
+		if (value && typeof value === 'object') {
+			if (value.constructor === Array) {
+				for (let i = 0; i < value.length; i++) {
+					this.prune(value[i]);
 				}
 			} else {
-				for (const key of Object.keys(object)) {
-					if (object[key] && typeof object[key] === 'object') {
-						if (object[key].constructor !== Array && object[key + 'Id']) {
-							object[key] = null;
-						} else { this.prune(object[key]); }
+				for (const key of Object.keys(value)) {
+					if (value[key] && typeof value[key] === 'object') {
+						if (value[key].constructor !== Array && value[key + 'Id']) {
+							value[key] = null;
+						} else { this.prune(value[key]); }
 					}
 				}
 			}
