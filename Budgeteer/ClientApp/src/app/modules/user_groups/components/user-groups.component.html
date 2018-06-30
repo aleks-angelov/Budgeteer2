@@ -1,16 +1,18 @@
 <div class="card border-top-0">
 	<div class="card-body">
-		<div class="row">
-			<div class="col-sm-2"></div>
-			<div class="col-sm-8 clearfix">
-				<h3 *ngIf="!hasExisting">Create Group</h3>
-				<h3 *ngIf="hasExisting">Update Group</h3>
-				<hr>
+		<section>
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8 clearfix">
+					<h3 *ngIf="!hasExisting">Create Group</h3>
+					<h3 *ngIf="hasExisting">Update Group</h3>
+					<hr>
 
-				<usergroups-create *ngIf="!hasExisting"></usergroups-create>
-				<usergroups-update *ngIf="hasExisting"></usergroups-update>
+					<usergroups-create *ngIf="!hasExisting"></usergroups-create>
+					<usergroups-update *ngIf="hasExisting"></usergroups-update>
+				</div>
+				<div class="col-sm-2"></div>
 			</div>
-			<div class="col-sm-2"></div>
-		</div>
+		</section>
 	</div>
 </div>
