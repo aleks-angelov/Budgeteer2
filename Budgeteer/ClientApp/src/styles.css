@@ -31,9 +31,9 @@ div.labeless {
 
 div.table-responsive {
 	border-bottom: .0625rem solid #CED4DA;
+	border-collapse: collapse;
 	border-top: .0625rem solid #CED4DA;
 	height: 25rem;
-	margin-bottom: 1.25rem;
 	margin-top: .25rem;
 }
 
