@@ -77,7 +77,16 @@ namespace Budgeteer
 
 			services.AddSwaggerGen(options =>
 			{
-				options.SwaggerDoc("v1", new Info { Title = "Budgeteer API", Version = "v1" });
+				options.SwaggerDoc("v1", new Info
+				{
+					Version = "v1",
+					Title = "Budgeteer API",
+					Contact = new Contact
+					{
+						Name = "Aleks Angelov",
+						Email = "aleks_angelov@mail.com"
+					}
+				});
 			});
 		}
 
