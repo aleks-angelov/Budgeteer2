@@ -6,14 +6,14 @@ import { InfrastructureModule } from '../infrastructure.module';
 })
 export class TokensService {
 	getToken(): string | null {
-		return localStorage.getItem('budgeteer_token');
+		return localStorage.getItem('token');
 	}
 
 	setToken(newToken: string) {
-		localStorage.setItem('budgeteer_token', newToken);
+		localStorage.setItem('token', newToken);
 	}
 
 	removeToken() {
-		localStorage.removeItem('budgeteer_token');
+		localStorage.removeItem('token');
 	}
 }
