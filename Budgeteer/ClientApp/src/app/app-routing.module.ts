@@ -7,7 +7,6 @@ import { OverviewComponent } from './modules/transactions/components/overview.co
 import { SavingsComponent } from './modules/transactions/components/savings.component';
 import { SpendingComponent } from './modules/transactions/components/spending.component';
 import { RegistratonComponent } from './modules/users/components/registration.component';
-import { UserGroupsComponent } from './modules/user_groups/components/user-groups.component';
 import { AuthGuard } from './infrastructure/services/auth-guard.service';
 
 const routes: Routes = [
@@ -40,17 +39,6 @@ const routes: Routes = [
 			{
 				path: 'Savings',
 				component: SavingsComponent
-			}
-		]
-	},
-	{
-		path: 'UserGroups',
-		canActivate: [AuthGuard],
-		children: [
-			{
-				path: '',
-				pathMatch: 'full',
-				component: UserGroupsComponent
 			}
 		]
 	},
