@@ -171,7 +171,7 @@ export class ChartsService {
 
 			const typeIndex = types.findIndex(type => type === transactions[i].type);
 			if (typeIndex !== -1) {
-				if (transactions[i].type !== CategoryType.Savings || transactions[i].category.name === 'Deposit') {
+				if (transactions[i].type !== CategoryType.Transfers || transactions[i].category.name === 'Deposit') {
 					(columnSeries[typeIndex].data as number[])[0] += transactions[i].amount;
 				} else {
 					(columnSeries[typeIndex].data as number[])[0] -= transactions[i].amount;

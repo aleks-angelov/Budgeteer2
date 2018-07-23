@@ -27,7 +27,7 @@ export class OverviewComponent implements OnInit {
 
 	debitCategories: Category[];
 	creditCategories: Category[];
-	savingsCategories: Category[];
+	transfersCategories: Category[];
 
 	overallBalance: number;
 	inEditMode: boolean;
@@ -53,7 +53,7 @@ export class OverviewComponent implements OnInit {
 
 		this.debitCategories = [];
 		this.creditCategories = [];
-		this.savingsCategories = [];
+		this.transfersCategories = [];
 
 		this.inEditMode = false;
 	}
@@ -151,7 +151,7 @@ export class OverviewComponent implements OnInit {
 							this.debitCategories.push(category);
 						} else if (category.type === CategoryType.Credit) {
 							this.creditCategories.push(category);
-						} else { this.savingsCategories.push(category); }
+						} else { this.transfersCategories.push(category); }
 					}
 				}
 			});
@@ -177,7 +177,7 @@ export class OverviewComponent implements OnInit {
 				this.overallBalance -= transaction.amount;
 			} else if (transaction.type === CategoryType.Credit) {
 				this.overallBalance += transaction.amount;
-			} else if (transaction.type === CategoryType.Savings && transaction.category) {
+			} else if (transaction.type === CategoryType.Transfers && transaction.category) {
 				if (transaction.category.name === 'Deposit') {
 					this.overallBalance -= transaction.amount;
 				} else if (transaction.category.name === 'Withdrawal') {

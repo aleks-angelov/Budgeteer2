@@ -27,7 +27,7 @@
 						        name="filterType">
 							<option [ngValue]="categoryType.Debit">Debit</option>
 							<option [ngValue]="categoryType.Credit">Credit</option>
-							<option [ngValue]="categoryType.Savings">Savings</option>
+							<option [ngValue]="categoryType.Transfers">Transfers</option>
 						</select>
 					</div>
 					<div class="form-group col-sm-2">
@@ -50,13 +50,13 @@
 							<option *ngFor="let category of creditCategories"
 							        [ngValue]="category">{{ category.name }}</option>
 						</select>
-						<select *ngIf="transactionFilter.type === categoryType.Savings"
+						<select *ngIf="transactionFilter.type === categoryType.Transfers"
 						        [ngModel]="transactionFilter.category"
 						        (ngModelChange)="changeFilterCategory($event)"
 						        class="form-control form-control-sm"
 						        id="filterCategory"
 						        name="filterCategory">
-							<option *ngFor="let category of savingsCategories"
+							<option *ngFor="let category of transfersCategories"
 							        [ngValue]="category">{{ category.name }}</option>
 						</select>
 					</div>
@@ -127,7 +127,7 @@
 									        required>
 										<option [ngValue]="categoryType.Debit">Debit</option>
 										<option [ngValue]="categoryType.Credit">Credit</option>
-										<option [ngValue]="categoryType.Savings">Savings</option>
+										<option [ngValue]="categoryType.Transfers">Transfers</option>
 									</select>
 									<span *ngIf="!transaction.inEditMode">{{ categoryType[transaction.type] }}</span>
 								</td>
@@ -151,13 +151,13 @@
 											<option *ngFor="let category of creditCategories"
 											        [ngValue]="category">{{ category.name }}</option>
 										</select>
-										<select *ngIf="transaction.type === categoryType.Savings"
+										<select *ngIf="transaction.type === categoryType.Transfers"
 										        [ngModel]="transaction.category"
 										        (ngModelChange)="changeCategory(transaction, $event)"
 										        class="form-control form-control-sm"
 										        name="category-{{ i }}"
 										        required>
-											<option *ngFor="let category of savingsCategories"
+											<option *ngFor="let category of transfersCategories"
 											        [ngValue]="category">{{ category.name }}</option>
 										</select>
 									</div>

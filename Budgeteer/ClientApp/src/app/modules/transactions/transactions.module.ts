@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IncomeComponent } from './components/income.component';
 import { OverviewComponent } from './components/overview.component';
-import { SavingsComponent } from './components/savings.component';
+import { TransfersComponent } from './components/transfers.component';
 import { SpendingComponent } from './components/spending.component';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { SpendingComponent } from './components/spending.component';
 		OverviewComponent,
 		SpendingComponent,
 		IncomeComponent,
-		SavingsComponent
+		TransfersComponent
 	],
 	providers: [DecimalPipe]
 })

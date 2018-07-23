@@ -4,12 +4,12 @@ import { BaseStatisticsComponent } from './base-statistics.component';
 import { CategoryType } from '../../../infrastructure/models/category-type';
 
 @Component({
-	selector: 'transactions-savings',
+	selector: 'transactions-transfers',
 	templateUrl: 'base-statistics.component.html'
 })
 
-export class SavingsComponent extends BaseStatisticsComponent implements OnInit {
+export class TransfersComponent extends BaseStatisticsComponent implements OnInit {
 	ngOnInit() {
-		this.initialize(CategoryType.Savings);
+		this.initialize(CategoryType.Transfers);
 	}
 }

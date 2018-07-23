@@ -143,9 +143,9 @@ export abstract class BaseStatisticsComponent {
 				this.seriesPrefix = 'Income';
 				break;
 			}
-			case CategoryType.Savings: {
+			case CategoryType.Transfers: {
 				this.seriesColor = '#90ED7D';
-				this.seriesPrefix = 'Savings';
+				this.seriesPrefix = 'Transfers';
 				break;
 			}
 			default: {

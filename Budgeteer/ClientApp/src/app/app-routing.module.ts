@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './modules/home/home.component';
 import { IncomeComponent } from './modules/transactions/components/income.component';
 import { OverviewComponent } from './modules/transactions/components/overview.component';
-import { SavingsComponent } from './modules/transactions/components/savings.component';
+import { TransfersComponent } from './modules/transactions/components/transfers.component';
 import { SpendingComponent } from './modules/transactions/components/spending.component';
 import { RegistratonComponent } from './modules/users/components/registration.component';
 import { AuthGuard } from './infrastructure/services/auth-guard.service';
@@ -37,8 +37,8 @@ const routes: Routes = [
 				component: IncomeComponent
 			},
 			{
-				path: 'Savings',
-				component: SavingsComponent
+				path: 'Transfers',
+				component: TransfersComponent
 			}
 		]
 	},
