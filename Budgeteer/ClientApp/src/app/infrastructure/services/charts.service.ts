@@ -151,7 +151,7 @@ export class ChartsService {
 	}
 
 	private getColumnSeriesByTypes(transactions: Transaction[], types: CategoryType[]): IndividualSeriesOptions[] {
-		const columnSeries = new Array<IndividualSeriesOptions>(types.length);
+		const columnSeries = [];
 		for (let i = 0; i < types.length; i++) {
 			const typeSeries: IndividualSeriesOptions = {
 				name: CategoryType[types[i]],
@@ -183,7 +183,7 @@ export class ChartsService {
 	}
 
 	private getColumnSeriesByCategories(transactions: Transaction[], categories: Category[]): IndividualSeriesOptions[] {
-		const columnSeries = new Array<IndividualSeriesOptions>(categories.length);
+		const columnSeries = [];
 		for (let i = 0; i < categories.length; i++) {
 			const categorySeries: IndividualSeriesOptions = {
 				name: categories[i].name,
@@ -217,7 +217,7 @@ export class ChartsService {
 	private getPieChartSeriesByCategories(transactions: Transaction[], categories: Category[]): IndividualSeriesOptions {
 		const pieSeries: IndividualSeriesOptions = {
 			name: undefined,
-			data: new Array<DataPoint>(categories.length)
+			data: []
 		};
 		const pieSeriesData = pieSeries.data as DataPoint[];
 		for (let i = 0; i < categories.length; i++) {
@@ -239,7 +239,7 @@ export class ChartsService {
 	private getPieChartSeriesByUsers(transactions: Transaction[], users: User[]): IndividualSeriesOptions {
 		const pieSeries: IndividualSeriesOptions = {
 			name: undefined,
-			data: new Array<DataPoint>(users.length)
+			data: []
 		};
 		const pieSeriesData = pieSeries.data as DataPoint[];
 		for (let i = 0; i < users.length; i++) {
