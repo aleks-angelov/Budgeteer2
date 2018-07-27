@@ -25,7 +25,7 @@ namespace Budgeteer.Infrastructure
 		{
 			_entitySet.Add(entity);
 
-			await _context.SaveChangesAsync();
+			await SaveChangesAsync();
 		}
 
 		public virtual async Task<List<T>> ReadFiltered(TFilter filter)
@@ -52,14 +52,14 @@ namespace Budgeteer.Infrastructure
 		{
 			_context.Entry(entity).State = EntityState.Modified;
 
-			await _context.SaveChangesAsync();
+			await SaveChangesAsync();
 		}
 
 		public virtual async Task Delete(T entity)
 		{
 			_entitySet.Remove(entity);
 
-			await _context.SaveChangesAsync();
+			await SaveChangesAsync();
 		}
 
 		public virtual bool Exists(int id)
@@ -67,6 +67,11 @@ namespace Budgeteer.Infrastructure
 			var result = _entitySet.Any(e => e.Id == id);
 
 			return result;
+		}
+
+		public virtual async Task<int> SaveChangesAsync()
+		{
+			return await _context.SaveChangesAsync();
 		}
 	}
 }

@@ -45,7 +45,7 @@ namespace Budgeteer.Modules.Users
 			};
 
 			_entitySet.Add(newUser);
-			await _context.SaveChangesAsync();
+			await SaveChangesAsync();
 
 			newUser.PasswordHash = null;
 			newUser.AuthToken = GenerateAuthToken(signupModel.Email);
