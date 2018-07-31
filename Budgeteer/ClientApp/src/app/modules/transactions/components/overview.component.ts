@@ -1,16 +1,16 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { saveAs } from 'file-saver';
 import { chart } from 'highcharts';
-
-import { ChartsService } from '../../../infrastructure/services/charts.service';
-import { CategoriesService } from '../../categories/categories.service';
-import { TransactionsService } from '../transactions.service';
-import { UsersService } from '../../users/users.service';
+import { CategoryType } from 'src/app/infrastructure/models/category-type';
 import { Category } from '../../../infrastructure/models/category';
 import { CategoryFilter } from '../../../infrastructure/models/category-filter';
-import { CategoryType } from 'src/app/infrastructure/models/category-type';
 import { Transaction } from '../../../infrastructure/models/transaction';
 import { TransactionFilter } from '../../../infrastructure/models/transaction-filter';
+import { ChartsService } from '../../../infrastructure/services/charts.service';
+import { CategoriesService } from '../../categories/categories.service';
+import { UsersService } from '../../users/users.service';
+import { TransactionsService } from '../transactions.service';
 
 @Component({
 	selector: 'transactions-overview',
@@ -98,6 +98,11 @@ export class OverviewComponent implements OnInit {
 		this.transactions.unshift(newTransaction);
 		newTransaction.inEditMode = true;
 		this.inEditMode = true;
+	}
+
+	exportTransactions() {
+		this.transactionsService.export()
+			.subscribe(file => saveAs(file));
 	}
 
 	editTransaction(transaction: Transaction) {

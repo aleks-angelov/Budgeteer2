@@ -97,14 +97,23 @@
 								<th style="width: 20%">Category:</th>
 								<th style="width: 16%">Amount:</th>
 								<th>Note:</th>
-								<th style="width: 8%">
-									<button (click)="addTransaction()"
-									        type="button"
-									        class="btn btn-block btn-primary btn-sm"
-									        [disabled]="inEditMode"
-									        autofocus>
-										<i class="fas fa-plus fa-fw"></i>
-									</button>
+								<th class="text-center"
+								    style="width: 8%">
+									<div class="btn-group btn-group-sm">
+										<button (click)="addTransaction()"
+										        type="button"
+										        class="btn btn-primary"
+										        [disabled]="inEditMode"
+										        autofocus>
+											<i class="fas fa-plus fa-fw"></i>
+										</button>
+										<button (click)="exportTransactions()"
+										        type="button"
+										        class="btn btn-success"
+										        [disabled]="inEditMode">
+											<i class="fas fa-file-download fa-fw"></i>
+										</button>
+									</div>
 								</th>
 							</tr>
 						</thead>
@@ -186,13 +195,13 @@
 									     class="btn-group btn-group-sm">
 										<button (click)="editTransaction(transaction)"
 										        type="button"
-										        class="btn btn-warning btn-sm"
+										        class="btn btn-warning"
 										        [disabled]="inEditMode">
 											<i class="fas fa-pencil-alt fa-fw"></i>
 										</button>
 										<button (click)="removeTransaction(transaction, i)"
 										        type="button"
-										        class="btn btn-secondary btn-sm"
+										        class="btn btn-secondary"
 										        [disabled]="inEditMode">
 											<i class="fas fa-minus fa-fw"></i>
 										</button>

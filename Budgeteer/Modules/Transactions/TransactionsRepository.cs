@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 using Budgeteer.Infrastructure;
+using Budgeteer.Modules.Categories;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -36,6 +38,46 @@ namespace Budgeteer.Modules.Transactions
 				.SingleOrDefaultAsync(e => e.Id == id);
 
 			return result;
+		}
+
+		public async Task<byte[]> Export()
+		{
+			var transactions = await _context.Transactions
+				.AsNoTracking()
+				.OrderByDescending(e => e.Date)
+				.Include(e => e.Category)
+				.ToListAsync();
+
+			var textBuilder = new StringBuilder();
+			textBuilder.AppendLine("Date;Type;Category;Amount;Note");
+
+			for(var i = 0; i < transactions.Count; i++)
+			{
+				var date = transactions[i].Date;
+				var data = $"{date.Day}.{date.Month}.{date.Year};";
+				switch(transactions[i].Type)
+				{
+					case CategoryTypeEnum.Debit:
+						data += "Expense;";
+						break;
+
+					case CategoryTypeEnum.Credit:
+						data += "Income;";
+						break;
+
+					case CategoryTypeEnum.Transfers:
+						data += (transactions[i].Category.Name == "Deposit") ? "Expense;" : "Income;";
+						break;
+				}
+				data += $"{transactions[i].Category.Name};";
+				data += $"{transactions[i].Amount.ToString("F2")};";
+				data += $"{transactions[i].Note}";
+
+				textBuilder.AppendLine(data);
+			}
+
+			var text = textBuilder.ToString();
+			return Encoding.UTF8.GetBytes(text);
 		}
 	}
 }
