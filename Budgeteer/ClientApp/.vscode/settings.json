@@ -1,0 +1,31 @@
+{
+	"css.lint.duplicateProperties": "warning",
+	"css.lint.ieHack": "warning",
+	"css.lint.universalSelector": "warning",
+	"css.lint.zeroUnits": "warning",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": true
+	},
+	"editor.detectIndentation": false,
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.insertSpaces": false,
+	"files.autoGuessEncoding": true,
+	"files.autoSave": "onFocusChange",
+	"files.insertFinalNewline": true,
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespace": true,
+	"html.format.endWithNewline": true,
+	"html.format.indentInnerHtml": true,
+	"html.format.maxPreserveNewLines": 1,
+	"html.format.wrapAttributes": "force-aligned",
+	"search.exclude": {
+		"**/dist": true,
+		"**/node_modules": true
+	},
+	"tslint.autoFixOnSave": true,
+	"tslint.rulesDirectory": "./node_modules/codelyzer",
+	"typescript.preferences.importModuleSpecifier": "relative",
+	"typescript.preferences.quoteStyle": "single",
+	"typescript.tsdk": "node_modules/typescript/lib"
+}
