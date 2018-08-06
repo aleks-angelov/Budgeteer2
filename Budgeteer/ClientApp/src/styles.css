@@ -1,7 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-
-.ng-invalid:not(form) {
-	border: .0625rem solid #A94442;
+a.indent-left, span.indent-left {
+	margin-left: 1rem;
 }
 
 div.btn-group .btn, button.btn {
@@ -45,6 +43,18 @@ form.form-inline .form-group, form.form-inline span {
 	margin-right: 1rem;
 }
 
-main {
+form.white-text {
+	color: #FFF;
+}
+
+hr.statistics-ruler {
+	margin-bottom: 1.5rem;
+}
+
+input.ng-invalid:not(form) {
+	border: .0625rem solid #A94442;
+}
+
+main.container {
 	margin-bottom: .75rem;
 }

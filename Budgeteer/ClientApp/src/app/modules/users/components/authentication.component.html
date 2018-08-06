@@ -1,7 +1,6 @@
 <form *ngIf="!isAuthenticated()"
       #loginForm="ngForm"
-      class="form-inline"
-      style="color: white">
+      class="form-inline white-text">
 	<div class="form-group">
 		<label for="loginEmail">E-mail: </label>
 		<input type="email"
@@ -33,8 +32,7 @@
 
 	<a routerLink="/Users/Registration"
 	   routerLinkActive="active"
-	   class="btn btn-outline-light"
-	   style="margin-left: 1rem">Sign up</a>
+	   class="btn btn-outline-light indent-left">Sign up</a>
 </form>
 
 <form *ngIf="isAuthenticated()"
