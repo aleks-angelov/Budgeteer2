@@ -32,6 +32,10 @@ export class OverviewComponent implements OnInit {
 	overallBalance: number;
 	inEditMode: boolean;
 
+	removalTransaction: Transaction;
+	removalIndex: number;
+	showRemovalModal: boolean;
+
 	overviewHistoryChart: Highcharts.ChartObject;
 	@ViewChild('overviewHistoryChartTarget') overviewHistoryChartTarget: ElementRef;
 	overviewDistributionChart: Highcharts.ChartObject;
@@ -56,6 +60,8 @@ export class OverviewComponent implements OnInit {
 		this.transfersCategories = [];
 
 		this.inEditMode = false;
+
+		this.showRemovalModal = false;
 	}
 
 	ngOnInit() {
@@ -112,12 +118,19 @@ export class OverviewComponent implements OnInit {
 		this.inEditMode = true;
 	}
 
+	prepareRemoval(transaction: Transaction, index: number) {
+		this.removalTransaction = transaction;
+		this.removalIndex = index;
+		this.showRemovalModal = true;
+	}
+
 	removeTransaction(transaction: Transaction, index = 0) {
 		if (transaction.id) {
 			this.transactionsService.delete(transaction.id)
 				.subscribe(() => {
 					this.transactions.splice(index, 1);
 					this.calculateOverallBalance();
+					this.showRemovalModal = false;
 				});
 		} else {
 			this.transactions.splice(index, 1);

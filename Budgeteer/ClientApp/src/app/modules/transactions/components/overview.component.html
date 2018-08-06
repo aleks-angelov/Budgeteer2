@@ -199,7 +199,7 @@
 										        [disabled]="inEditMode">
 											<i class="fas fa-pencil-alt fa-fw"></i>
 										</button>
-										<button (click)="removeTransaction(transaction, i)"
+										<button (click)="prepareRemoval(transaction, i)"
 										        type="button"
 										        class="btn btn-secondary"
 										        [disabled]="inEditMode">
@@ -226,6 +226,34 @@
 					</table>
 				</div>
 			</form>
+
+			<div class="modal fade"
+			     [class.show]="showRemovalModal"
+			     [style.display]="showRemovalModal ? 'block' : 'none'"
+			     tabindex="-1">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Confirm removal</h5>
+						</div>
+						<div class="modal-body">
+							<p>Are you sure you want to remove the record?</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button"
+							        (click)="removeTransaction(removalTransaction, removalIndex)"
+							        class="btn btn-danger">
+								<i class="fas fa-trash"></i> Remove
+							</button>
+							<button type="button"
+							        (click)="showRemovalModal = false"
+							        class="btn btn-secondary">
+								<i class="fas fa-ban"></i> Cancel
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</section>
 
 		<hr>
