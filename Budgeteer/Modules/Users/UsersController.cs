@@ -17,6 +17,8 @@ namespace Budgeteer.Modules.Users
 		[HttpPost("Authenticate")]
 		public async Task<ActionResult<UserModel>> Authenticate(LoginDtoModel loginModel)
 		{
+			if (!ModelState.IsValid) { return BadRequest(ModelState); }
+
 			var user = await (_repository as UsersRepository).Authenticate(loginModel);
 
 			if (user == null) { return Unauthorized(); }
@@ -28,6 +30,8 @@ namespace Budgeteer.Modules.Users
 		[HttpPost("Register")]
 		public async Task<ActionResult<UserModel>> Register(SignupDtoModel signupModel)
 		{
+			if (!ModelState.IsValid) { return BadRequest(ModelState); }
+
 			var user = await (_repository as UsersRepository).Register(signupModel);
 
 			return CreatedAtAction("Register", new { id = user.Id }, user);

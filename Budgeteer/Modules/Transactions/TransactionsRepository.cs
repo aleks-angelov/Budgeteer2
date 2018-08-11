@@ -40,6 +40,28 @@ namespace Budgeteer.Modules.Transactions
 			return result;
 		}
 
+		public override async Task Update(TransactionModel entity)
+		{
+			entity.Category = null;
+			entity.User = null;
+
+			await base.Update(entity);
+		}
+
+		public override async Task Create(TransactionModel entity)
+		{
+			var category = entity.Category;
+			entity.Category = null;
+
+			var user = entity.User;
+			entity.User = null;
+
+			await base.Create(entity);
+
+			entity.Category = category;
+			entity.User = user;
+		}
+
 		public async Task<byte[]> Export()
 		{
 			var transactions = await _context.Transactions

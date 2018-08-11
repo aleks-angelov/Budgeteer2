@@ -4,6 +4,7 @@ using Budgeteer.Infrastructure;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Budgeteer.Modules.Transactions
 {
@@ -11,6 +12,31 @@ namespace Budgeteer.Modules.Transactions
 	{
 		public TransactionsController(TransactionsRepository repository)
 			: base(repository) { }
+
+		// PUT: api/Transactions/5
+		[HttpPut("{id}")]
+		public override async Task<IActionResult> Put(int id, TransactionModel entity)
+		{
+			if (id != entity.Id) { return BadRequest(); }
+
+			try { await _repository.Update(entity); }
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!_repository.Exists(entity.Id)) { return NotFound(); }
+				else { throw; }
+			}
+
+			return NoContent();
+		}
+
+		// POST: api/Transactions
+		[HttpPost]
+		public override async Task<ActionResult<TransactionModel>> Post(TransactionModel entity)
+		{
+			await _repository.Create(entity);
+
+			return CreatedAtAction("Post", new { id = entity.Id }, entity);
+		}
 
 		// GET: api/Transactions/Export
 		[AllowAnonymous]

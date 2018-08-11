@@ -68,6 +68,13 @@ namespace Budgeteer
 				.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
 				.AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
+			services.Configure<ApiBehaviorOptions>(options =>
+			{
+				options.SuppressConsumesConstraintForFormFileParameters = false;
+				options.SuppressInferBindingSourcesForParameters = false;
+				options.SuppressModelStateInvalidFilter = true;
+			});
+
 			services.AddDbContextPool<EntityContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Budgeteer")));
 
 			services.AddScoped<CategoriesRepository>();
