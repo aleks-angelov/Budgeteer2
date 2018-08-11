@@ -17,6 +17,10 @@ namespace Budgeteer.Modules.Transactions
 
 		public override async Task<List<TransactionModel>> ReadFiltered(TransactionFilterModel filter)
 		{
+			filter.Category = null;
+			filter.User = null;
+			filter.UserGroup = null;
+
 			var predicate = filter.GetPredicate();
 			var result = await _context.Transactions
 				.AsNoTracking()
