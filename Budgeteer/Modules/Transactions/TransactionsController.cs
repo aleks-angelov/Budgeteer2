@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using Budgeteer.Infrastructure;
 
@@ -12,6 +13,15 @@ namespace Budgeteer.Modules.Transactions
 	{
 		public TransactionsController(TransactionsRepository repository)
 			: base(repository) { }
+
+		// POST: api/Transactions/Filtered
+		[HttpPost("Filtered")]
+		public override async Task<ActionResult<List<TransactionModel>>> GetFiltered(TransactionFilterModel filter)
+		{
+			var filteredEntities = await _repository.ReadFiltered(filter);
+
+			return Ok(filteredEntities);
+		}
 
 		// PUT: api/Transactions/5
 		[HttpPut("{id}")]
