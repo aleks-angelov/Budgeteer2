@@ -21,13 +21,6 @@ namespace Budgeteer.Infrastructure
 			_entitySet = context.Set<T>();
 		}
 
-		public virtual async Task Create(T entity)
-		{
-			_entitySet.Add(entity);
-
-			await SaveChangesAsync();
-		}
-
 		public virtual async Task<List<T>> ReadFiltered(TFilter filter)
 		{
 			var predicate = filter.GetPredicate();
@@ -41,9 +34,7 @@ namespace Budgeteer.Infrastructure
 
 		public virtual async Task<T> Read(int id)
 		{
-			var result = await _entitySet
-				.AsNoTracking()
-				.SingleOrDefaultAsync(e => e.Id == id);
+			var result = await _entitySet.FindAsync(id);
 
 			return result;
 		}
@@ -51,6 +42,13 @@ namespace Budgeteer.Infrastructure
 		public virtual async Task Update(T entity)
 		{
 			_context.Entry(entity).State = EntityState.Modified;
+
+			await SaveChangesAsync();
+		}
+
+		public virtual async Task Create(T entity)
+		{
+			_entitySet.Add(entity);
 
 			await SaveChangesAsync();
 		}

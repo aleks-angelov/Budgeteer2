@@ -21,17 +21,6 @@ namespace Budgeteer.Infrastructure
 			_repository = repository;
 		}
 
-		// POST: api/Entities
-		[HttpPost]
-		public virtual async Task<ActionResult<T>> Post(T entity)
-		{
-			await _repository.Create(entity);
-
-			var createdEntity = await _repository.Read(entity.Id);
-
-			return CreatedAtAction("Post", createdEntity);
-		}
-
 		// POST: api/Entities/Filtered
 		[HttpPost("Filtered")]
 		public virtual async Task<ActionResult<List<T>>> GetFiltered(TFilter filter)
@@ -47,19 +36,16 @@ namespace Budgeteer.Infrastructure
 		{
 			var entity = await _repository.Read(id);
 
-			if(entity == null)
-			{
-				return NotFound();
-			}
+			if (entity == null) { return NotFound(); }
 
 			return Ok(entity);
 		}
 
 		// PUT: api/Entities/5
 		[HttpPut("{id}")]
-		public virtual async Task<ActionResult<T>> Put(int id, T entity)
+		public virtual async Task<IActionResult> Put(int id, T entity)
 		{
-			if(id != entity.Id)
+			if (id != entity.Id)
 			{
 				return BadRequest();
 			}
@@ -68,9 +54,9 @@ namespace Budgeteer.Infrastructure
 			{
 				await _repository.Update(entity);
 			}
-			catch(DbUpdateConcurrencyException)
+			catch (DbUpdateConcurrencyException)
 			{
-				if(!_repository.Exists(entity.Id))
+				if (!_repository.Exists(entity.Id))
 				{
 					return NotFound();
 				}
@@ -80,9 +66,16 @@ namespace Budgeteer.Infrastructure
 				}
 			}
 
-			var updatedEntity = await _repository.Read(entity.Id);
+			return NoContent();
+		}
 
-			return AcceptedAtAction("Put", new { id = updatedEntity.Id }, updatedEntity);
+		// POST: api/Entities
+		[HttpPost]
+		public virtual async Task<ActionResult<T>> Post(T entity)
+		{
+			await _repository.Create(entity);
+
+			return CreatedAtAction("Post", new { id = entity.Id }, entity);
 		}
 
 		// DELETE: api/Entities/5
@@ -91,7 +84,7 @@ namespace Budgeteer.Infrastructure
 		{
 			var entity = await _repository.Read(id);
 
-			if(entity == null)
+			if (entity == null)
 			{
 				return NotFound();
 			}
