@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { EntitiesService } from '../../infrastructure/base/entities.service';
+import { EntitiesService } from '../../infrastructure/services/entities.service';
 import { UserGroup } from '../../infrastructure/models/user-group';
 import { UserGroupFilter } from '../../infrastructure/models/user-group-filter';
 

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { EntitiesService } from '../../infrastructure/base/entities.service';
+import { EntitiesService } from '../../infrastructure/services/entities.service';
 import { LoginDto } from '../../infrastructure/models/login-dto';
 import { SignupDto } from '../../infrastructure/models/signup-dto';
 import { User } from '../../infrastructure/models/user';

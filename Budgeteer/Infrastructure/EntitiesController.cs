@@ -45,25 +45,13 @@ namespace Budgeteer.Infrastructure
 		[HttpPut("{id}")]
 		public virtual async Task<IActionResult> Put(int id, T entity)
 		{
-			if (id != entity.Id)
-			{
-				return BadRequest();
-			}
+			if (id != entity.Id) { return BadRequest(); }
 
-			try
-			{
-				await _repository.Update(entity);
-			}
+			try { await _repository.Update(entity); }
 			catch (DbUpdateConcurrencyException)
 			{
-				if (!_repository.Exists(entity.Id))
-				{
-					return NotFound();
-				}
-				else
-				{
-					throw;
-				}
+				if (!_repository.Exists(entity.Id)) { return NotFound(); }
+				else { throw; }
 			}
 
 			return NoContent();
@@ -84,10 +72,7 @@ namespace Budgeteer.Infrastructure
 		{
 			var entity = await _repository.Read(id);
 
-			if (entity == null)
-			{
-				return NotFound();
-			}
+			if (entity == null) { return NotFound(); }
 
 			await _repository.Delete(entity);
 

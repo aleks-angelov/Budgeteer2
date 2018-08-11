@@ -1,20 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-
 import { environment } from '../../../environments/environment';
 import { Entity } from '../models/entity';
 import { EntityFilter } from '../models/entity-filter';
-import { Utils } from './utils';
 
 export abstract class EntitiesService<T extends Entity, TFilter extends EntityFilter> {
 	protected baseUrl = environment.apiUrl;
 
 	constructor(protected httpClient: HttpClient, urlSuffix: string) {
 		this.baseUrl += urlSuffix;
-	}
-
-	create(entity: T) {
-		Utils.prune(entity);
-		return this.httpClient.post<T>(this.baseUrl, entity);
 	}
 
 	readFiltered(filter: TFilter) {
@@ -26,8 +19,11 @@ export abstract class EntitiesService<T extends Entity, TFilter extends EntityFi
 	}
 
 	update(entity: T) {
-		Utils.prune(entity);
-		return this.httpClient.put<T>(this.baseUrl + entity.id, entity);
+		return this.httpClient.put<void>(this.baseUrl + entity.id, entity);
+	}
+
+	create(entity: T) {
+		return this.httpClient.post<T>(this.baseUrl, entity);
 	}
 
 	delete(id: number) {

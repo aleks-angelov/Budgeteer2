@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EntitiesService } from '../../infrastructure/base/entities.service';
+import { EntitiesService } from '../../infrastructure/services/entities.service';
 import { Category } from '../../infrastructure/models/category';
 import { CategoryFilter } from '../../infrastructure/models/category-filter';
 import { CategoriesModule } from './categories.module';
