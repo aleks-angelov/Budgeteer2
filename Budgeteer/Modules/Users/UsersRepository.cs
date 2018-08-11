@@ -62,7 +62,7 @@ namespace Budgeteer.Modules.Users
 				issuer: "budgeteer.com",
 				audience: "budgeteer.com",
 				claims: claims,
-				expires: DateTime.Now.AddHours(3),
+				expires: DateTime.Now.AddHours(1),
 				signingCredentials: creds);
 
 			return new JwtSecurityTokenHandler().WriteToken(token);

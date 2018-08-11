@@ -19,10 +19,7 @@ namespace Budgeteer.Modules.Users
 		{
 			var user = await (_repository as UsersRepository).Authenticate(loginModel);
 
-			if (user == null)
-			{
-				return Unauthorized();
-			}
+			if (user == null) { return Unauthorized(); }
 
 			return Ok(user);
 		}
@@ -33,7 +30,7 @@ namespace Budgeteer.Modules.Users
 		{
 			var user = await (_repository as UsersRepository).Register(signupModel);
 
-			return CreatedAtAction("Register", user);
+			return CreatedAtAction("Register", new { id = user.Id }, user);
 		}
 	}
 }
