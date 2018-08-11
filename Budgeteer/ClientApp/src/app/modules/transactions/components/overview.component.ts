@@ -138,14 +138,17 @@ export class OverviewComponent implements OnInit {
 	}
 
 	saveTransaction(transaction: Transaction) {
+		transaction.date = new Date(transaction.date);
+		transaction.inEditMode = false;
+
 		if (transaction.id) {
 			this.transactionsService.update(transaction)
-				.subscribe(tr => transaction = tr);
+				.subscribe();
 		} else {
 			this.transactionsService.create(transaction)
 				.subscribe(tr => this.transactions[0] = tr);
 		}
-		transaction.inEditMode = false;
+
 		this.inEditMode = false;
 		this.calculateOverallBalance();
 	}
