@@ -17,18 +17,18 @@ namespace Budgeteer.Modules.Categories
 		{
 			var predicate = PredicateBuilder.True<CategoryModel>();
 
-			if(!string.IsNullOrWhiteSpace(Name))
+			if (!string.IsNullOrWhiteSpace(Name))
 			{
 				var name = Name.Trim().ToLower();
 				predicate = predicate.And(e => e.Name.Trim().ToLower().Contains(name));
 			}
 
-			if(Type.HasValue)
+			if (Type.HasValue)
 			{
 				predicate = predicate.And(e => e.Type == Type.Value);
 			}
 
-			if(IsActive.HasValue)
+			if (IsActive.HasValue)
 			{
 				predicate = predicate.And(e => e.IsActive == IsActive.Value);
 			}

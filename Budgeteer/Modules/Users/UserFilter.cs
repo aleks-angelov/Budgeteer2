@@ -13,7 +13,7 @@ namespace Budgeteer.Modules.Users
 		{
 			var predicate = PredicateBuilder.True<UserModel>();
 
-			if(!string.IsNullOrWhiteSpace(Email))
+			if (!string.IsNullOrWhiteSpace(Email))
 			{
 				var email = Email.Trim().ToLower();
 				predicate = predicate.And(e => e.Email.Trim().ToLower() == email);

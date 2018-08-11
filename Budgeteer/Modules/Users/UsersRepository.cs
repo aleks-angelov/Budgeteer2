@@ -25,7 +25,7 @@ namespace Budgeteer.Modules.Users
 				.AsNoTracking()
 				.SingleOrDefaultAsync(e => e.Email == loginModel.Email);
 
-			if(user != null && PasswordHasher.VerifyPassword(user.PasswordHash, loginModel.Password))
+			if (user != null && PasswordHasher.VerifyPassword(user.PasswordHash, loginModel.Password))
 			{
 				user.PasswordHash = null;
 				user.AuthToken = GenerateAuthToken(loginModel.Email);

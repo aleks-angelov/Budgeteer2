@@ -51,11 +51,11 @@ namespace Budgeteer.Modules.Transactions
 			var textBuilder = new StringBuilder();
 			textBuilder.AppendLine("Date;Type;Category;Amount;Note");
 
-			for(var i = 0; i < transactions.Count; i++)
+			for (var i = 0; i < transactions.Count; i++)
 			{
 				var date = transactions[i].Date;
 				var data = $"{date.Day}.{date.Month}.{date.Year};";
-				switch(transactions[i].Type)
+				switch (transactions[i].Type)
 				{
 					case CategoryTypeEnum.Debit:
 						data += "Expense;";

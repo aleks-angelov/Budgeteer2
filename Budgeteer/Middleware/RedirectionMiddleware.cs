@@ -19,7 +19,7 @@ namespace Budgeteer.Middleware
 		{
 			await next(context);
 
-			if(context.Response.StatusCode == 404 &&
+			if (context.Response.StatusCode == 404 &&
 			!context.Request.Path.Value.Contains("/api/") &&
 			!context.Request.Path.Value.Contains("/swagger") &&
 			!Path.HasExtension(context.Request.Path.Value))

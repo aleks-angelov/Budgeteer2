@@ -19,7 +19,7 @@ namespace Budgeteer.Modules.UserGroups
 				.Include(e => e.Users)
 				.SingleOrDefaultAsync(e => e.Id == id);
 
-			for(var i = 0; i < result.Users.Count; i++)
+			for (var i = 0; i < result.Users.Count; i++)
 			{
 				result.Users[i] = new UserModel
 				{

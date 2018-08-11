@@ -19,7 +19,7 @@ namespace Budgeteer.Modules.Users
 		{
 			var user = await (_repository as UsersRepository).Authenticate(loginModel);
 
-			if(user == null)
+			if (user == null)
 			{
 				return Unauthorized();
 			}

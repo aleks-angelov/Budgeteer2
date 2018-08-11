@@ -31,38 +31,38 @@ namespace Budgeteer.Modules.Transactions
 		{
 			var predicate = PredicateBuilder.True<TransactionModel>();
 
-			if(DateFrom.HasValue)
+			if (DateFrom.HasValue)
 			{
 				predicate = predicate.And(e => e.Date.Date >= DateFrom.Value.Date);
 			}
 
-			if(DateUntil.HasValue)
+			if (DateUntil.HasValue)
 			{
 				predicate = predicate.And(e => e.Date.Date <= DateUntil.Value.Date);
 			}
 
-			if(!string.IsNullOrWhiteSpace(Note))
+			if (!string.IsNullOrWhiteSpace(Note))
 			{
 				var note = Note.Trim().ToLower();
 				predicate = predicate.And(e => e.Note.Trim().ToLower().Contains(note));
 			}
 
-			if(Type.HasValue)
+			if (Type.HasValue)
 			{
 				predicate = predicate.And(e => e.Type == Type.Value);
 			}
 
-			if(CategoryId.HasValue)
+			if (CategoryId.HasValue)
 			{
 				predicate = predicate.And(e => e.CategoryId == CategoryId.Value);
 			}
 
-			if(UserId.HasValue)
+			if (UserId.HasValue)
 			{
 				predicate = predicate.And(e => e.UserId == UserId.Value);
 			}
 
-			if(UserGroupId.HasValue)
+			if (UserGroupId.HasValue)
 			{
 				predicate = predicate.And(e => e.User.UserGroupId == UserGroupId.Value);
 			}
