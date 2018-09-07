@@ -18,7 +18,7 @@
 										    .Select(p => $"import {{ {Cleanup(p.Type.Name)} }} from './{ToKebabCase(Cleanup(p.Type.Name))}';")
 										    .Aggregate("", (all, import) => $"{all}{import}\r\n")
 										    .TrimStart();
-
+	
     string ClassModifiers(Class c) => c.IsAbstract ? " abstract" : "";
 
     string ClassName(Class c) => c.Name.Replace("Model", "") + (c.BaseClass != null ? $" extends {Cleanup(c.BaseClass.Name)}" : "");

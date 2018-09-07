@@ -1,5 +1,7 @@
 ﻿using System.Text;
 
+using AutoMapper;
+
 using Budgeteer.Middleware;
 using Budgeteer.Modules;
 using Budgeteer.Modules.Categories;
@@ -63,6 +65,8 @@ namespace Budgeteer
 			{
 				options.RedirectStatusCode = StatusCodes.Status301MovedPermanently;
 			});
+
+			services.AddAutoMapper();
 
 			services.AddMvc()
 				.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)

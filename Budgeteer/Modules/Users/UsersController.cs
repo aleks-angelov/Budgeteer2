@@ -34,7 +34,7 @@ namespace Budgeteer.Modules.Users
 
 			var user = await (_repository as UsersRepository).Register(signupModel);
 
-			return CreatedAtAction("Register", new { id = user.Id }, user);
+			return CreatedAtAction("Register", user);
 		}
 	}
 }

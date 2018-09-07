@@ -4,6 +4,8 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
+using AutoMapper;
+
 using Budgeteer.Infrastructure;
 
 using Microsoft.EntityFrameworkCore;
@@ -15,27 +17,35 @@ namespace Budgeteer.Modules.Users
 	public class UsersRepository : EntitiesRepository<UserModel, UserFilterModel>
 	{
 		private readonly IConfiguration _configuration;
+		private readonly IMapper _mapper;
 
-		public UsersRepository(EntityContext context, IConfiguration configuration)
-					: base(context) { _configuration = configuration; }
-
-		public async Task<UserModel> Authenticate(LoginDtoModel loginModel)
+		public UsersRepository(
+			EntityContext context,
+			IConfiguration configuration,
+			IMapper mapper)
+			: base(context)
 		{
-			var user = await _entitySet
+			_configuration = configuration;
+			_mapper = mapper;
+		}
+
+		public async Task<UserDtoModel> Authenticate(LoginDtoModel loginModel)
+		{
+			var existingUser = await _entitySet
 				.AsNoTracking()
 				.SingleOrDefaultAsync(e => e.Email == loginModel.Email);
 
-			if (user != null && PasswordHasher.VerifyPassword(user.PasswordHash, loginModel.Password))
+			if (existingUser != null && PasswordHasher.VerifyPassword(existingUser.PasswordHash, loginModel.Password))
 			{
-				user.PasswordHash = null;
-				user.AuthToken = GenerateAuthToken(loginModel.Email);
-				return user;
+				existingUser.PasswordHash = null;
+				existingUser.AuthToken = GenerateAuthToken(loginModel.Email);
+				return _mapper.Map<UserDtoModel>(existingUser);
 			}
 
 			return null;
 		}
 
-		public async Task<UserModel> Register(SignupDtoModel signupModel)
+		public async Task<UserDtoModel> Register(SignupDtoModel signupModel)
 		{
 			var newUser = new UserModel
 			{
@@ -49,7 +59,7 @@ namespace Budgeteer.Modules.Users
 
 			newUser.PasswordHash = null;
 			newUser.AuthToken = GenerateAuthToken(signupModel.Email);
-			return newUser;
+			return _mapper.Map<UserDtoModel>(newUser);
 		}
 
 		private string GenerateAuthToken(string userEmail)
