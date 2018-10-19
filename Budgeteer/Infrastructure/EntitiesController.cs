@@ -16,7 +16,7 @@ namespace Budgeteer.Infrastructure
 	{
 		protected readonly EntitiesRepository<T, TFilter> _repository;
 
-		public EntitiesController(EntitiesRepository<T, TFilter> repository)
+		protected EntitiesController(EntitiesRepository<T, TFilter> repository)
 		{
 			_repository = repository;
 		}

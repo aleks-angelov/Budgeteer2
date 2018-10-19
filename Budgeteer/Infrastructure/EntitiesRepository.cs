@@ -67,9 +67,9 @@ namespace Budgeteer.Infrastructure
 			return result;
 		}
 
-		public virtual async Task<int> SaveChangesAsync()
+		public virtual Task<int> SaveChangesAsync()
 		{
-			return await _context.SaveChangesAsync();
+			return _context.SaveChangesAsync();
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 using AutoMapper;
 
@@ -42,12 +43,13 @@ namespace Budgeteer
 				{
 					options.TokenValidationParameters = new TokenValidationParameters
 					{
-						ValidateIssuer = true,
 						ValidateAudience = true,
-						ValidateLifetime = true,
-						ValidateIssuerSigningKey = true,
-						ValidIssuer = "budgeteer.com",
 						ValidAudience = "budgeteer.com",
+						ValidateIssuer = true,
+						ValidIssuer = "budgeteer.com",
+						ValidateLifetime = true,
+						ClockSkew = TimeSpan.Zero,
+						ValidateIssuerSigningKey = true,
 						IssuerSigningKey = new SymmetricSecurityKey(
 							Encoding.UTF8.GetBytes(Configuration["SecurityKey"]))
 					};
@@ -61,10 +63,7 @@ namespace Budgeteer
 				options.IncludeSubDomains = true;
 			});
 
-			services.AddHttpsRedirection(options =>
-			{
-				options.RedirectStatusCode = StatusCodes.Status301MovedPermanently;
-			});
+			services.AddHttpsRedirection(options => options.RedirectStatusCode = StatusCodes.Status301MovedPermanently);
 
 			services.AddAutoMapper();
 
@@ -119,6 +118,7 @@ namespace Budgeteer
 			}
 
 			app.UseHttpsRedirection();
+
 			app.UseMiddleware<RedirectionMiddleware>();
 
 			app.UseFileServer();
@@ -126,10 +126,7 @@ namespace Budgeteer
 			app.UseAuthentication();
 
 			app.UseSwagger();
-			app.UseSwaggerUI(options =>
-			{
-				options.SwaggerEndpoint("/swagger/v1/swagger.json", "Budgeteer API v1");
-			});
+			app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "Budgeteer API v1"));
 
 			app.UseMvc();
 		}

@@ -97,7 +97,7 @@ namespace Budgeteer.Modules.Transactions
 				}
 				data += $"{transactions[i].Category.Name};";
 				data += $"{transactions[i].Amount.ToString("F2")};";
-				data += $"{transactions[i].Note}";
+				data += transactions[i].Note;
 
 				textBuilder.AppendLine(data);
 			}
