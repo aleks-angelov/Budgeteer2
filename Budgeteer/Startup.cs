@@ -68,7 +68,7 @@ namespace Budgeteer
 			services.AddAutoMapper();
 
 			services.AddMvc()
-				.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+				.SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
 				.AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
 			services.Configure<ApiBehaviorOptions>(options =>
