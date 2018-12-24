@@ -9,6 +9,7 @@ namespace Budgeteer.Infrastructure
 {
 	[Authorize]
 	[ApiController]
+	[ApiConventionType(typeof(EntityApiConventions))]
 	[Route("api/[controller]")]
 	public abstract class EntitiesController<T, TFilter> : ControllerBase
 		where T : EntityModel
@@ -45,6 +46,17 @@ namespace Budgeteer.Infrastructure
 			return Ok(entity);
 		}
 
+		// POST: api/Entities
+		[HttpPost]
+		public virtual async Task<ActionResult<T>> Post(T entity)
+		{
+			if (!ModelState.IsValid) { return BadRequest(ModelState); }
+
+			await _repository.Create(entity);
+
+			return CreatedAtAction("Post", new { id = entity.Id }, entity);
+		}
+
 		// PUT: api/Entities/5
 		[HttpPut("{id}")]
 		public virtual async Task<IActionResult> Put(int id, T entity)
@@ -61,17 +73,6 @@ namespace Budgeteer.Infrastructure
 			}
 
 			return NoContent();
-		}
-
-		// POST: api/Entities
-		[HttpPost]
-		public virtual async Task<ActionResult<T>> Post(T entity)
-		{
-			if (!ModelState.IsValid) { return BadRequest(ModelState); }
-
-			await _repository.Create(entity);
-
-			return CreatedAtAction("Post", new { id = entity.Id }, entity);
 		}
 
 		// DELETE: api/Entities/5
